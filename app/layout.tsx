@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { FaYoutube } from "react-icons/fa6";
+import Link from "next/link";
+import { SearchBar } from "./components/SearchBar";
+import { Drawer } from "./components/Drawer";
+import { IconText } from "./components/IconText";
+import { RightNav } from "./components/RightNav";
 
 export const metadata: Metadata = {
     title: "Youtube",
@@ -13,7 +19,16 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body>{children}</body>
+            <body>
+                <header>
+                    <nav className="flex justify-between gap-6 py-3 px-4  items-center text-2xl">
+                        <Drawer />
+                        <SearchBar />
+                        <RightNav />
+                    </nav>
+                </header>
+                {children}
+            </body>
         </html>
     );
 }
