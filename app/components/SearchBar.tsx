@@ -20,7 +20,7 @@ export const SearchBar = () => {
     // useOnClickOutside(formRef, () => setSearchVal(() =>))
 
     return (
-        <div>
+        <div className="">
             <form
                 onSubmit={handleSubmit}
                 className="rounded-3xl flex border border-gray-500"
@@ -30,7 +30,7 @@ export const SearchBar = () => {
                     value={searchVal}
                     onChange={handleChange}
                     placeholder="Search"
-                    className="text-base rounded-l-3xl pl-6 py-1 z-10 border-r-2 w-full placeholder:text-gray-500 tracking-wide font-semibold max-w-xl"
+                    className="text-base rounded-l-3xl pl-6 py-[.4rem] z-10 border-r-2 w-full placeholder:text-gray-500 tracking-wide font-semibold max-w-xl"
                 />
                 <button
                     type="submit"

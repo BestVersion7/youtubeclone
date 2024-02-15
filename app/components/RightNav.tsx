@@ -24,7 +24,7 @@ export const RightNav = () => {
         <div>
             {showSearch && (
                 <div
-                    className="fixed py-2 top-0 right-0 left-0 z-50  items-center flex justify-between px-4 gap-4 bg-white sm:hidden"
+                    className="fixed h-16 top-0 right-0 left-0 z-50  items-center flex justify-between px-4 gap-4 bg-white sm:hidden"
                     ref={searchRef}
                 >
                     <button
@@ -41,25 +41,37 @@ export const RightNav = () => {
                 </div>
             )}
 
-            <div className="flex gap-6 items-center">
-                <button
-                    onClick={handleOpenSearchBar}
-                    type="button"
-                    title="Search"
-                    className="sm:hidden"
-                >
-                    <IoIosSearch />
-                </button>
+            <div className="flex items-center gap-4">
+                <div className="sm:hidden">
+                    <button
+                        onClick={handleOpenSearchBar}
+                        type="button"
+                        title="Search"
+                    >
+                        <IoIosSearch />
+                    </button>
+                </div>
+
                 <div className="sm:hidden">
                     <Voice />
                 </div>
-                <button type="button" title="Create">
-                    <RiVideoAddLine />
-                </button>
-                <button type="button" title="Notifications">
-                    <IoIosNotificationsOutline />
-                </button>
-                <IoPersonCircleOutline />
+
+                <div>
+                    <button type="button" title="Create">
+                        <RiVideoAddLine />
+                    </button>
+                </div>
+                <div>
+                    <button type="button" title="Notifications">
+                        <IoIosNotificationsOutline />
+                    </button>
+                </div>
+
+                <div>
+                    <button type="button" aria-label="user">
+                        <IoPersonCircleOutline />
+                    </button>
+                </div>
             </div>
         </div>
     );

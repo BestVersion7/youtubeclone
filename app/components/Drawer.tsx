@@ -43,7 +43,7 @@ export const Drawer = () => {
 
     return (
         <div>
-            <div className="flex gap-4 py-1">
+            <div className="flex gap-4">
                 <button
                     type="button"
                     aria-label="drawer"
@@ -51,11 +51,7 @@ export const Drawer = () => {
                 >
                     <RxHamburgerMenu />
                 </button>
-                <Link
-                    href="/"
-                    title="Youtube Home"
-                    className="flex items-center"
-                >
+                <Link href="/" title="Youtube Home" className="flex">
                     <FaYoutube className="text-3xl text-red-500" />
                     <h2 className="tracking-[-0.1em] text-xl font-medium">
                         Premium
@@ -67,10 +63,10 @@ export const Drawer = () => {
                     <div className="fixed inset-0 bg-black bg-opacity-20"></div>
 
                     <div
-                        className="fixed top-0 left-0  z-30 bg-white"
+                        className="fixed top-0 left-0 z-30 bg-white"
                         ref={drawerRef}
                     >
-                        <div className="flex gap-4 py-3 px-4">
+                        <div className="flex gap-4 items-center px-4 h-16">
                             <button
                                 type="button"
                                 aria-label="drawer"
@@ -81,7 +77,7 @@ export const Drawer = () => {
                             <Link
                                 href="/"
                                 title="Youtube Home"
-                                className="flex items-center"
+                                className="flex"
                             >
                                 <FaYoutube className="text-3xl text-red-500" />
                                 <h2 className="tracking-[-0.1em] text-xl font-medium">
