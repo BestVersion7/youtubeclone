@@ -6,4 +6,8 @@
     .drawer-title {
         @apply px-2 font-medium
     }
+
+    main {
+        @apply max-w-7xl m-auto bg-blue-300 px-1 sm:px-4
+    }
 }

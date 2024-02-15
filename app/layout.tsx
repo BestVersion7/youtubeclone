@@ -23,7 +23,7 @@ export default function RootLayout({
                         <Drawer />
 
                         {/* search and voicebar */}
-                        <div className="hidden sm:flex items-center gap-2 w-full max-w-xl">
+                        <div className="hidden ml-24 sm:flex lg:ml-0 items-center gap-2 w-full max-w-xl">
                             <div className="w-full">
                                 <SearchBar />
                             </div>
