@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { SearchBar } from "./components/SearchBar";
-import { Drawer } from "./components/Drawer";
-import { RightNav } from "./components/RightNav";
-import { Voice } from "./components/Voice";
+import { SearchBar } from "./components/navigation/SearchBar";
+import { Drawer } from "./components/navigation/Drawer";
+import { RightNav } from "./components/navigation/RightNav";
+import { Voice } from "./components/navigation/Voice";
 
 export const metadata: Metadata = {
     title: "Youtube",
@@ -17,24 +17,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body>
-                <header>
-                    <nav className="text-2xl flex items-center justify-between gap-4 px-5">
-                        <Drawer />
-                        <div className="hidden ml-24 sm:flex lg:ml-0 items-center gap-2 w-full max-w-xl">
-                            <div className="w-full">
-                                <SearchBar />
-                            </div>
-                            <div className="bg-gray-100 px-2  rounded-3xl">
-                                <Voice />
-                            </div>
-                        </div>
-
-                        <RightNav />
-                    </nav>
-                </header>
-                {children}
-            </body>
+            <body>{children}</body>
         </html>
     );
 }

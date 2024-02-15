@@ -7,7 +7,7 @@ import { useState } from "react";
 import { SearchBar } from "./SearchBar";
 import { IoMdArrowBack } from "react-icons/io";
 import { useRef } from "react";
-import { useOnClickOutside } from "../utils/customHooks";
+import { useOnClickOutside } from "../../utils/customHooks";
 import { Voice } from "./Voice";
 
 export const RightNav = () => {
@@ -24,7 +24,7 @@ export const RightNav = () => {
         <div>
             {showSearch && (
                 <div
-                    className="fixed h-16 top-0 right-0 left-0 z-50  items-center flex justify-between px-4 gap-4 bg-white sm:hidden"
+                    className="fixed h-16 top-0 right-0 left-0 z-30  items-center flex justify-between px-4 gap-4 bg-white sm:hidden"
                     ref={searchRef}
                 >
                     <button
@@ -52,9 +52,9 @@ export const RightNav = () => {
                     </button>
                 </div>
 
-                <div className="sm:hidden">
+                {/* <div className="hidden">
                     <Voice />
-                </div>
+                </div> */}
 
                 <div>
                     <button type="button" title="Create">

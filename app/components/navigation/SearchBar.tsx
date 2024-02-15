@@ -2,7 +2,7 @@
 import { useState, useRef } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { AiFillAudio } from "react-icons/ai";
-import { useOnClickOutside } from "../utils/customHooks";
+import { useOnClickOutside } from "../../utils/customHooks";
 
 export const SearchBar = () => {
     const [searchVal, setSearchVal] = useState("");
