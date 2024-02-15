@@ -1,7 +1,7 @@
 export default function Home() {
     return (
         <main>
-            this is main is main is main is main is main is main is main is main
+            <div className="flex">fdskjl</div>
         </main>
     );
 }

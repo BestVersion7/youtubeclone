@@ -19,7 +19,7 @@ import { BiMovie } from "react-icons/bi";
 import { CgMediaLive } from "react-icons/cg";
 import { SiYoutubegaming } from "react-icons/si";
 import { FaRegNewspaper } from "react-icons/fa6";
-import { CiTrophy } from "react-icons/ci";
+import { CiTrophy, CiYoutube } from "react-icons/ci";
 import { MdLightbulbOutline } from "react-icons/md";
 import { GiClothesline } from "react-icons/gi";
 import { IoPersonCircleOutline } from "react-icons/io5";
@@ -32,6 +32,7 @@ import { CiFlag1 } from "react-icons/ci";
 import { IoHelpCircleOutline } from "react-icons/io5";
 import { RiFeedbackLine } from "react-icons/ri";
 import { BsMusicNoteBeamed } from "react-icons/bs";
+import { IconTextDesktop } from "./IconTextDesktop";
 
 import { useOnClickOutside } from "../utils/customHooks";
 import { useRef } from "react";
@@ -43,7 +44,7 @@ export const Drawer = () => {
 
     return (
         <div>
-            <div className="flex gap-4">
+            <div className="flex h-16 gap-5 items-center">
                 <button
                     type="button"
                     aria-label="drawer"
@@ -51,6 +52,7 @@ export const Drawer = () => {
                 >
                     <RxHamburgerMenu />
                 </button>
+
                 <Link href="/" title="Youtube Home" className="flex">
                     <FaYoutube className="text-3xl text-red-500" />
                     <h2 className="tracking-[-0.1em] text-xl font-medium">
@@ -58,15 +60,31 @@ export const Drawer = () => {
                     </h2>
                 </Link>
             </div>
+
+            {/* desktop */}
+            {!showDrawer && (
+                <div className="hidden md:grid w-16 text-center fixed left-0">
+                    <IconTextDesktop icon={GoHome} link="Home" />
+                    <IconTextDesktop icon={SiYoutubeshorts} link="Shorts" />
+                    <IconTextDesktop
+                        icon={MdOutlineSubscriptions}
+                        link="Subscriptions"
+                    />
+                    <IconTextDesktop icon={BsMusicNoteBeamed} link="Music" />
+                    <IconTextDesktop icon={CiYoutube} link="You" />
+                    <IconTextDesktop icon={LiaDownloadSolid} link="Downloads" />
+                </div>
+            )}
+
             {showDrawer && (
                 <div>
                     <div className="fixed inset-0 bg-black bg-opacity-20"></div>
 
                     <div
-                        className="fixed top-0 left-0 z-30 bg-white"
+                        className="absolute top-0 left-0 z-30 bg-white"
                         ref={drawerRef}
                     >
-                        <div className="flex gap-4 items-center px-4 h-16">
+                        <div className="flex pl-5 gap-5 items-center h-16">
                             <button
                                 type="button"
                                 aria-label="drawer"
@@ -87,7 +105,7 @@ export const Drawer = () => {
                         </div>
 
                         {/* drawer begin */}
-                        <div className="overflow-y-scroll h-[calc(100vh-3rem)] w-64 text-sm">
+                        <div className="overflow-y-scroll h-[calc(100vh-4rem)] w-64 text-sm">
                             <div className="px-3">
                                 <IconText icon={GoHome} link="Home" />
                                 <IconText

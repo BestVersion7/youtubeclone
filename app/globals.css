@@ -8,6 +8,6 @@
     }
 
     main {
-        @apply max-w-7xl m-auto bg-blue-300 px-1 sm:px-4
+        @apply max-w-7xl m-auto px-1 md:ml-16
     }
 }

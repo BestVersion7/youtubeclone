@@ -19,10 +19,8 @@ export default function RootLayout({
         <html lang="en">
             <body>
                 <header>
-                    <nav className="flex justify-between px-4 items-center text-2xl gap-4 h-16">
+                    <nav className="text-2xl flex items-center justify-between gap-4 px-5">
                         <Drawer />
-
-                        {/* search and voicebar */}
                         <div className="hidden ml-24 sm:flex lg:ml-0 items-center gap-2 w-full max-w-xl">
                             <div className="w-full">
                                 <SearchBar />
