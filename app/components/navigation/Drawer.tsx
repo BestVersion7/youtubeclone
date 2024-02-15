@@ -94,11 +94,11 @@ export const Drawer = () => {
                         />
                     </div>
                 ) : (
-                    <div className="w-60">
+                    <div>
                         <div className="fixed inset-0 bg-black bg-opacity-20"></div>
 
                         <div
-                            className="absolute top-0 left-0 z-30 bg-white"
+                            className="w-64 absolute top-0 left-0 z-30 bg-white"
                             ref={drawerRef}
                         >
                             <div className="flex pl-5 gap-5 items-center h-16">

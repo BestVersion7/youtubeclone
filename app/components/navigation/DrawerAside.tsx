@@ -26,7 +26,7 @@ import { BsMusicNoteBeamed } from "react-icons/bs";
 
 export const DrawerAside = () => {
     return (
-        <div className="overflow-y-scroll h-[calc(100vh-4rem)] w-64 text-sm">
+        <div className="overflow-y-scroll h-[calc(100vh-4rem)] text-sm">
             <div className="px-3">
                 <IconText icon={GoHome} link="Home" />
                 <IconText
