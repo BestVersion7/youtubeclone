@@ -1,11 +1,13 @@
 "use client";
-import { useRef, useState } from "react";
+import { useState, useRef } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { AiFillAudio } from "react-icons/ai";
+import { useOnClickOutside } from "../utils/customHooks";
 
 export const SearchBar = () => {
-    const searchRef = useRef(null);
     const [searchVal, setSearchVal] = useState("");
+    const [openSearch, setOpenSearch] = useState(false);
+    // const formRef = useRef(null)
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -15,34 +17,29 @@ export const SearchBar = () => {
         setSearchVal(e.target.value);
     };
 
+    // useOnClickOutside(formRef, () => setSearchVal(() =>))
+
     return (
-        <div className="flex gap-4">
+        <div>
             <form
                 onSubmit={handleSubmit}
-                className=" text-lg rounded-3xl flex items-center border-2"
+                className="rounded-3xl flex border border-gray-500"
             >
                 <input
                     type="text"
                     value={searchVal}
                     onChange={handleChange}
                     placeholder="Search"
-                    className="rounded-l-3xl pl-5 z-10 py-2 border-r-2"
+                    className="text-base rounded-l-3xl pl-6 py-1 z-10 border-r-2 w-full placeholder:text-gray-500 tracking-wide font-semibold max-w-xl"
                 />
                 <button
                     type="submit"
                     title="Search"
-                    className="px-4 bg-slate-50 rounded-r-3xl text-2xl h-11"
+                    className="px-4 bg-slate-50 rounded-r-3xl "
                 >
                     <IoIosSearch />
                 </button>
             </form>
-            <button
-                type="button"
-                className="bg-slate-100 px-2 rounded-full"
-                title="Search with your voice"
-            >
-                <AiFillAudio />
-            </button>
         </div>
     );
 };

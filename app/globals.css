@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .drawer-title {
+        @apply px-2 font-medium
+    }
+}

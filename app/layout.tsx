@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { FaYoutube } from "react-icons/fa6";
-import Link from "next/link";
 import { SearchBar } from "./components/SearchBar";
 import { Drawer } from "./components/Drawer";
-import { IconText } from "./components/IconText";
 import { RightNav } from "./components/RightNav";
+import { Voice } from "./components/Voice";
 
 export const metadata: Metadata = {
     title: "Youtube",
@@ -21,9 +19,19 @@ export default function RootLayout({
         <html lang="en">
             <body>
                 <header>
-                    <nav className="flex justify-between gap-6 py-3 px-4  items-center text-2xl">
+                    <nav className="flex justify-between py-2 px-4  items-center text-xl gap-4">
                         <Drawer />
-                        <SearchBar />
+
+                        {/* search and voicebar */}
+                        <div className="hidden sm:flex gap-4 w-full max-w-xl">
+                            <div className="w-full">
+                                <SearchBar />
+                            </div>
+                            <div className="bg-gray-100 py-1 px-2 rounded-3xl">
+                                <Voice />
+                            </div>
+                        </div>
+
                         <RightNav />
                     </nav>
                 </header>

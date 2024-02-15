@@ -8,7 +8,6 @@ import { IconText } from "./IconText";
 import { GoHome, GoVideo } from "react-icons/go";
 import { SiYoutubeshorts } from "react-icons/si";
 import { MdOutlineSubscriptions, MdOutlineWatchLater } from "react-icons/md";
-import { FaMusic } from "react-icons/fa";
 import { PiUserSquareThin } from "react-icons/pi";
 import { MdHistory } from "react-icons/md";
 import { LiaDownloadSolid } from "react-icons/lia";
@@ -23,14 +22,28 @@ import { FaRegNewspaper } from "react-icons/fa6";
 import { CiTrophy } from "react-icons/ci";
 import { MdLightbulbOutline } from "react-icons/md";
 import { GiClothesline } from "react-icons/gi";
+import { IoPersonCircleOutline } from "react-icons/io5";
 import { MdOutlinePodcasts } from "react-icons/md";
+import { LuHexagon } from "react-icons/lu";
+import { SiYoutubemusic } from "react-icons/si";
+import { TbBrandYoutubeKids } from "react-icons/tb";
+import { CiSettings } from "react-icons/ci";
+import { CiFlag1 } from "react-icons/ci";
+import { IoHelpCircleOutline } from "react-icons/io5";
+import { RiFeedbackLine } from "react-icons/ri";
+import { BsMusicNoteBeamed } from "react-icons/bs";
+
+import { useOnClickOutside } from "../utils/customHooks";
+import { useRef } from "react";
 
 export const Drawer = () => {
     const [showDrawer, setShowDrawer] = useState(false);
+    const drawerRef = useRef(null);
+    useOnClickOutside(drawerRef, () => setShowDrawer(false));
 
     return (
         <div>
-            <div className="flex gap-4">
+            <div className="flex gap-4 py-1">
                 <button
                     type="button"
                     aria-label="drawer"
@@ -49,12 +62,15 @@ export const Drawer = () => {
                     </h2>
                 </Link>
             </div>
-            {!showDrawer && (
+            {showDrawer && (
                 <div>
                     <div className="fixed inset-0 bg-black bg-opacity-20"></div>
 
-                    <div className="fixed top-0 left-0  z-30 bg-white">
-                        <div className="flex gap-4 py-[1.31rem] px-4">
+                    <div
+                        className="fixed top-0 left-0  z-30 bg-white"
+                        ref={drawerRef}
+                    >
+                        <div className="flex gap-4 py-3 px-4">
                             <button
                                 type="button"
                                 aria-label="drawer"
@@ -73,21 +89,28 @@ export const Drawer = () => {
                                 </h2>
                             </Link>
                         </div>
-                        <div className="overflow-y-scroll h-[calc(100vh-4.4rem)] px-5 text-base">
-                            <div>
+
+                        {/* drawer begin */}
+                        <div className="overflow-y-scroll h-[calc(100vh-3rem)] w-64 text-sm">
+                            <div className="px-3">
                                 <IconText icon={GoHome} link="Home" />
                                 <IconText
                                     icon={SiYoutubeshorts}
                                     link="Shorts"
+                                    color="text-red-600"
                                 />
                                 <IconText
                                     icon={MdOutlineSubscriptions}
                                     link="Subscriptions"
                                 />
-                                <IconText icon={FaMusic} link="YouTube Music" />
+                                <IconText
+                                    icon={BsMusicNoteBeamed}
+                                    link="YouTube Music"
+                                />
                             </div>
-                            <div>
-                                <h2>You {`>`}</h2>
+                            <hr className="my-3" />
+                            <div className="px-3">
+                                <h2 className="drawer-title">You {`>`}</h2>
                                 <IconText
                                     icon={PiUserSquareThin}
                                     link="Your channel"
@@ -104,11 +127,21 @@ export const Drawer = () => {
                                 />
                                 <IconText icon={BiLike} link="Liked videos" />
                             </div>
-                            <div>
-                                <h2>Subscriptions</h2>
+
+                            <hr className="my-3" />
+
+                            <div className="px-3">
+                                <h2 className="drawer-title">Subscriptions</h2>
+                                <IconText
+                                    icon={IoPersonCircleOutline}
+                                    link="Jamila Musayeva"
+                                    subscription={true}
+                                />
                             </div>
-                            <div>
-                                <h2>Explore</h2>
+                            <hr className="my-3" />
+
+                            <div className="px-3">
+                                <h2 className="drawer-title">Explore</h2>
                                 <IconText icon={FaFire} link="Trending" />
                                 <IconText
                                     icon={FiShoppingBag}
@@ -138,6 +171,137 @@ export const Drawer = () => {
                                     icon={MdOutlinePodcasts}
                                     link="Podcasts"
                                 />
+                            </div>
+                            <hr className="my-3" />
+                            <div className="px-3">
+                                <h2 className="drawer-title">
+                                    More from Youtube
+                                </h2>
+                                <IconText
+                                    icon={LuHexagon}
+                                    link="YouTube Studio"
+                                    color="text-red-500"
+                                />
+                                <IconText
+                                    icon={FaYoutube}
+                                    link="Youtube TV"
+                                    color="text-red-500"
+                                />
+                                <IconText
+                                    icon={SiYoutubemusic}
+                                    link="Youtube Music"
+                                    color="text-red-500"
+                                />
+                                <IconText
+                                    icon={TbBrandYoutubeKids}
+                                    link="Youtube Kids"
+                                    color="text-red-500"
+                                />
+                            </div>
+                            <hr className="my-3" />
+                            <div className="px-3 ">
+                                <IconText icon={CiSettings} link="Settings" />
+                                <IconText
+                                    icon={CiFlag1}
+                                    link="Report history"
+                                />
+                                <IconText
+                                    icon={IoHelpCircleOutline}
+                                    link="Help"
+                                />
+                                <IconText
+                                    icon={RiFeedbackLine}
+                                    link="Send feedback"
+                                />
+                            </div>
+                            <hr className="my-3" />
+
+                            <div className="px-5 grid gap-3 text-sm text-gray-600 font-semibold">
+                                <div className="">
+                                    <Link
+                                        className="inline-block mr-2"
+                                        href="/"
+                                    >
+                                        About
+                                    </Link>
+                                    <Link
+                                        className="inline-block mr-2"
+                                        href="/"
+                                    >
+                                        Press
+                                    </Link>
+                                    <Link
+                                        className="inline-block mr-2"
+                                        href="/"
+                                    >
+                                        Copyright
+                                    </Link>
+                                    <Link
+                                        className="inline-block mr-2"
+                                        href="/"
+                                    >
+                                        Contact us
+                                    </Link>
+                                    <Link
+                                        className="inline-block mr-2"
+                                        href="/"
+                                    >
+                                        Creators
+                                    </Link>
+                                    <Link
+                                        className="inline-block mr-2"
+                                        href="/"
+                                    >
+                                        Advertise
+                                    </Link>
+                                    <Link
+                                        className="inline-block mr-2"
+                                        href="/"
+                                    >
+                                        Developers
+                                    </Link>
+                                </div>
+                                <div>
+                                    <Link
+                                        className="inline-block mr-2"
+                                        href="/"
+                                    >
+                                        Terms
+                                    </Link>
+                                    <Link
+                                        className="inline-block mr-2"
+                                        href="/"
+                                    >
+                                        Privacy
+                                    </Link>
+                                    <Link
+                                        className="inline-block mr-2"
+                                        href="/"
+                                    >
+                                        Policy & Safety
+                                    </Link>
+                                    <Link
+                                        className="inline-block mr-2"
+                                        href="/"
+                                    >
+                                        How Youtube works
+                                    </Link>
+                                    <Link
+                                        className="inline-block mr-2"
+                                        href="/"
+                                    >
+                                        Test new features
+                                    </Link>
+                                    <Link
+                                        className="inline-block mr-2"
+                                        href="/"
+                                    >
+                                        NFL Sunday Ticket
+                                    </Link>
+                                </div>
+                                <p className="mb-5 text-xs text-gray-400">
+                                    &copy; 2024 Google LLC
+                                </p>
                             </div>
                         </div>
                     </div>
