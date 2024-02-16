@@ -1,9 +1,4 @@
-"use client";
-
 import { RxHamburgerMenu } from "react-icons/rx";
-import { useState } from "react";
-import Link from "next/link";
-import { IconText } from "./IconText";
 import { GoHome, GoVideo } from "react-icons/go";
 import { SiYoutubeshorts } from "react-icons/si";
 import { MdOutlineSubscriptions, MdOutlineWatchLater } from "react-icons/md";
@@ -27,105 +22,94 @@ import {
 } from "react-icons/io5";
 import { RiFeedbackLine } from "react-icons/ri";
 import { BsMusicNoteBeamed } from "react-icons/bs";
-import { IconTextDesktop } from "./IconTextDesktop";
-import { DrawerAside } from "./DrawerAside";
-
-import { useOnClickOutside } from "../../utils/customHooks";
-import { useRef } from "react";
+import { DrawerClient } from "./DrawerClient";
 
 export const Drawer = () => {
-    const [showDrawer, setShowDrawer] = useState(false);
-
-    const handleShowDrawer = () => {
-        setShowDrawer((val) => !val);
-        const drawer = document.getElementById("drawer-nav");
-        const main = document.querySelector("#main-home");
-        if (drawer) {
-            const drawerStyle = window.getComputedStyle(drawer, null);
-            console.log(drawerStyle.width);
-            // if (drawerStyle.width === "141.825px") {
-            //     main.style.marginLeft = "500.825px";
-            // } else {
-            //     main.style.marginLeft = "100px";
-            // }
-        }
-    };
-
-    const drawerRef = useRef(null);
-    useOnClickOutside(drawerRef, () => setShowDrawer(false));
-
     return (
         <div>
-            <div className="flex h-16 gap-5 items-center">
-                <button
-                    type="button"
-                    aria-label="drawer"
-                    onClick={handleShowDrawer}
-                >
-                    <RxHamburgerMenu />
-                </button>
-
-                <Link href="/" title="Youtube Home" className="flex">
-                    <FaYoutube className="text-3xl text-red-500" />
-                    <h2 className="tracking-[-0.1em] text-xl font-medium">
-                        Premium
-                    </h2>
-                </Link>
-            </div>
-
-            {/* desktop */}
-            <aside id="drawer-nav">
-                {!showDrawer ? (
-                    <div className="hidden md:grid w-16 text-center absolute left-0">
-                        <IconTextDesktop icon={GoHome} link="Home" />
-                        <IconTextDesktop icon={SiYoutubeshorts} link="Shorts" />
-                        <IconTextDesktop
-                            icon={MdOutlineSubscriptions}
-                            link="Subscriptions"
-                        />
-                        <IconTextDesktop
-                            icon={BsMusicNoteBeamed}
-                            link="Music"
-                        />
-                        <IconTextDesktop icon={CiYoutube} link="You" />
-                        <IconTextDesktop
-                            icon={LiaDownloadSolid}
-                            link="Downloads"
-                        />
-                    </div>
-                ) : (
-                    <div>
-                        <div className="fixed inset-0 bg-black bg-opacity-20"></div>
-
-                        <div
-                            className="w-64 absolute top-0 left-0 z-30 bg-white"
-                            ref={drawerRef}
-                        >
-                            <div className="flex pl-5 gap-5 items-center h-16">
-                                <button
-                                    type="button"
-                                    aria-label="drawer"
-                                    onClick={handleShowDrawer}
-                                >
-                                    <RxHamburgerMenu />
-                                </button>
-                                <Link
-                                    href="/"
-                                    title="Youtube Home"
-                                    className="flex"
-                                >
-                                    <FaYoutube className="text-3xl text-red-500" />
-                                    <h2 className="tracking-[-0.1em] text-xl font-medium">
-                                        Premium
-                                    </h2>
-                                </Link>
-                            </div>
-
-                            <DrawerAside />
-                        </div>
-                    </div>
-                )}
-            </aside>
+            <DrawerClient
+                youtubeIcon={<FaYoutube />}
+                hamburgerIcon={<RxHamburgerMenu />}
+                desktopIcons={[
+                    { label: "Home", icon: <GoHome /> },
+                    {
+                        label: "Shorts",
+                        icon: <SiYoutubeshorts />,
+                        color: "text-red-500",
+                    },
+                    {
+                        label: "Subscriptions",
+                        icon: <MdOutlineSubscriptions />,
+                    },
+                    { label: "Music", icon: <BsMusicNoteBeamed /> },
+                    { label: "You", icon: <CiYoutube /> },
+                    { label: "Downloads", icon: <LiaDownloadSolid /> },
+                ]}
+                drawerIcons1={[
+                    { label: "Home", icon: <GoHome /> },
+                    {
+                        label: "Shorts",
+                        icon: <SiYoutubeshorts />,
+                        color: "text-red-500",
+                    },
+                    {
+                        label: "Subscriptions",
+                        icon: <MdOutlineSubscriptions />,
+                    },
+                    { label: "Music", icon: <BsMusicNoteBeamed /> },
+                ]}
+                drawerIcons2={[
+                    { label: "Your channel", icon: <PiUserSquareThin /> },
+                    { label: "History", icon: <MdHistory /> },
+                    {
+                        label: "Your videos",
+                        icon: <GoVideo />,
+                    },
+                    { label: "Watch later", icon: <MdOutlineWatchLater /> },
+                    { label: "Downloads", icon: <LiaDownloadSolid /> },
+                    { label: "Liked videos", icon: <BiLike /> },
+                ]}
+                drawerIcons3={[
+                    {
+                        label: "Jamila Musayeva",
+                        icon: <IoPersonCircleOutline />,
+                    },
+                ]}
+                drawerIcons4={[
+                    { label: "Trending", icon: <FaFire /> },
+                    { label: "Shopping", icon: <FiShoppingBag /> },
+                    {
+                        label: "Music",
+                        icon: <IoMusicalNoteOutline />,
+                    },
+                    { label: "Movies & TV", icon: <BiMovie /> },
+                    { label: "Live", icon: <CgMediaLive /> },
+                    { label: "Gaming", icon: <SiYoutubegaming /> },
+                    { label: "News", icon: <FaRegNewspaper /> },
+                    { label: "Sports", icon: <CiTrophy /> },
+                    { label: "Learning", icon: <MdLightbulbOutline /> },
+                    { label: "Fashion & beauty", icon: <GiClothesline /> },
+                    { label: "Podcasts", icon: <MdOutlinePodcasts /> },
+                ]}
+                drawerIcons5={[
+                    {
+                        label: "YouTube Studio",
+                        icon: <LuHexagon />,
+                    },
+                    { label: "Youtube TV", icon: <FaYoutube /> },
+                    { label: "Youtube Music", icon: <SiYoutubemusic /> },
+                    { label: "Youtube Kids", icon: <TbBrandYoutubeKids /> },
+                ]}
+                drawerIcons6={[
+                    {
+                        label: "Settings",
+                        icon: <CiSettings />,
+                    },
+                    { label: "Report history", icon: <CiFlag1 /> },
+                    { label: "Help", icon: <IoHelpCircleOutline /> },
+                    { label: "Send feedback", icon: <RiFeedbackLine /> },
+                ]}
+            />
         </div>
     );
 };

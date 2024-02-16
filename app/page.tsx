@@ -10,9 +10,9 @@ export default async function Home() {
     return (
         <>
             <header className="sticky top-0">
-                <nav className="text-2xl flex items-center text-center justify-between gap-4 px-5">
+                <nav className="flex items-center justify-between gap-4 px-5">
                     <Drawer />
-                    <div className="hidden ml-24 sm:flex lg:ml-0 items-center gap-2 w-full max-w-xl">
+                    <div className="hidden sm:flex lg:ml-0 items-center gap-2 w-full max-w-xl">
                         <div className="w-full">
                             <SearchBar />
                         </div>

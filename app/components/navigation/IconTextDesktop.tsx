@@ -1,19 +1,16 @@
-import { IconType } from "react-icons";
 import Link from "next/link";
+import { IconProps } from "@/app/utils/types";
 
-type props = {
-    icon: IconType;
-    link: string;
-};
-
-export const IconTextDesktop = (props: props) => {
+export const IconTextDesktop = (props: IconProps) => {
     return (
         <Link
             href="/"
-            className="flex flex-col gap-0 py-2 hover:bg-gray-200 hover:rounded-xl"
+            className="flex m-auto flex-col gap-0 py-2 hover:bg-gray-200 hover:rounded-xl"
         >
-            <props.icon className="text-2xl text-center m-auto" />
-            <span className="text-xs tracking-tighter">{props.link}</span>
+            <span className={`${props.color ?? "black"} m-auto text-2xl`}>
+                {props.icon}
+            </span>
+            <span className="tracking-tighter">{props.label}</span>
         </Link>
     );
 };
