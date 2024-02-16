@@ -12,7 +12,7 @@ export const IconText = (props: IconProps) => {
                 {props.icon}
             </span>
 
-            <span className="overflow-hidden tracking-tight">
+            <span className="overflow-hidden tracking-tight text-base ">
                 {props.label}
             </span>
             {props.subscription && (

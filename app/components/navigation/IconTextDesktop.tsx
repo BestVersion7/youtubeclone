@@ -10,7 +10,7 @@ export const IconTextDesktop = (props: IconProps) => {
             <span className={`${props.color ?? "black"} m-auto text-2xl`}>
                 {props.icon}
             </span>
-            <span className="tracking-tighter">{props.label}</span>
+            <span className="text-xs tracking-tighter">{props.label}</span>
         </Link>
     );
 };
