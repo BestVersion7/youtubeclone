@@ -2,7 +2,7 @@
 
 import { IconProps } from "@/app/utils/types";
 import { IconText } from "./IconText";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { IconTextDesktop } from "./IconTextDesktop";
 import Link from "next/link";
 import { useMarginLeft, useOnClickOutside } from "@/app/utils/customHooks";

@@ -7,7 +7,9 @@
         @apply px-2 font-medium text-base tracking-wide
     }
 
-
+    .main-home {
+        @apply px-4 sm:px-6 m-auto max-w-[2000px]
+    }
 
     /* main { */
     /* @apply m-auto max-w-[2000px] */
