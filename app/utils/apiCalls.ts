@@ -3,7 +3,7 @@ export type VideoType = {
     snippet: {
         publishedAt: Date;
         thumbnails: {
-            default: {
+            standard: {
                 url: string;
             };
             maxres: {
@@ -16,8 +16,13 @@ export type VideoType = {
             title: string;
         };
     };
+    contentDetails: {
+        duration: string;
+    };
     statistics: {
         viewCount: number;
+        likeCount: number;
+        commentCount: number;
     };
 };
 

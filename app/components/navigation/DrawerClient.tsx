@@ -77,7 +77,7 @@ export const DrawerClient = (props: props) => {
                         ))}
                     </div>
                 ) : (
-                    <div id="drawer">
+                    <div>
                         <div className="fixed inset-0 bg-black bg-opacity-20"></div>
                         <div
                             className="w-64 absolute top-0 left-0 z-10 bg-white"
@@ -385,10 +385,7 @@ export const DrawerClient = (props: props) => {
                         </div>
                     </div>
                 ) : (
-                    <div
-                        id="desktop-aside-mini"
-                        className="pl-[4.5px] text-center absolute left-0"
-                    >
+                    <div className="pl-[4.5px] text-center absolute left-0">
                         {props.desktopIcons.map((item, index) => (
                             <IconTextDesktop key={index} {...item} />
                         ))}

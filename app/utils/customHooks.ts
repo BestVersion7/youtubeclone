@@ -40,7 +40,6 @@ export function useOnClickOutside(
 export function useMarginLeft(showDrawer: boolean, showDesktopDrawer: boolean) {
     const handleResize = () => {
         let widthMargin;
-        const drawer: any = document.getElementById("drawer");
         const desktopAsideMini: any =
             document.getElementById("desktop-aside-mini");
         const asideSmall = document.getElementById("aside-small");
@@ -58,14 +57,14 @@ export function useMarginLeft(showDrawer: boolean, showDesktopDrawer: boolean) {
                     if (style.display === "none") {
                         widthMargin = "0px";
                     } else {
-                        widthMargin = "45px";
+                        widthMargin = "55px";
                     }
                 }
             } else {
                 if (desktopAside) {
                     widthMargin = "245px";
                 } else {
-                    widthMargin = "45px";
+                    widthMargin = "55px";
                 }
             }
         }

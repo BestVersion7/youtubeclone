@@ -6,6 +6,8 @@ export async function GET(req: NextRequest) {
 
         let url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&maxResults=10&chart=mostPopular&key=${process.env.GOOGLE_API_KEY}`;
 
+        // '%2player'
+        // player => embedHtml
         if (videoId) {
             url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${process.env.GOOGLE_API_KEY}`;
         }

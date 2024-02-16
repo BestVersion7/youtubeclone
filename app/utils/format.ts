@@ -1,8 +1,15 @@
 export const formatViews = (views: number) => {
+    const million = 1_000_000;
+    const thousand = million / 1000;
     let count;
-    if (views > 1_000_000) {
-        const rounded = (views / 1_000_000).toFixed(1);
+    if (views > million) {
+        const rounded = (views / million).toFixed(1);
         count = `${rounded}M views`;
+    } else if (views > thousand) {
+        const rounded = (views / thousand).toFixed(0);
+        count = `${rounded}K views`;
+    } else {
+        count = `${views} views`;
     }
     return count;
 };
@@ -76,4 +83,9 @@ export const formatPublishDate = (date: Date) => {
         }
     }
     return age;
+};
+
+export const formatShortenTitle = (title: string) => {
+    const limit = 60;
+    return title.length > limit ? `${title.slice(0, limit)}...` : title;
 };
