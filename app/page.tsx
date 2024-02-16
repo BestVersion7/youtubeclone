@@ -4,10 +4,9 @@ import { Drawer } from "./components/navigation/Drawer";
 import { SearchBar } from "./components/navigation/SearchBar";
 import { Voice } from "./components/navigation/Voice";
 import { RightNav } from "./components/navigation/RightNav";
-import Image from "next/image";
 
 export default async function Home() {
-    // const videos = await get10Videos();
+    const videos = await get10Videos();
 
     return (
         <>
@@ -29,12 +28,12 @@ export default async function Home() {
 
             <main className="main-home">
                 <div id="main-home">
-                    {/*    <h2 className="text-lg">Recommended: </h2>
+                    <h2 className="text-lg">Recommended: </h2>
                     <div className="grid gap-x-4 gap-y-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
                         {videos.items.map((item, index) => (
                             <VideoPreview key={index} {...item} />
                         ))}
-                    </div>*/}
+                    </div>
                 </div>
             </main>
         </>
