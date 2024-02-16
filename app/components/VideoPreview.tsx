@@ -31,7 +31,7 @@ export const VideoPreview = async (props: VideoType) => {
                 <div>
                     <Link href={`/watch?v=${props.id}`}>
                         <h3
-                            className="font-medium text-lg "
+                            className="font-medium"
                             title={props.snippet.localized.title}
                         >
                             {formatShortenTitle(props.snippet.localized.title)}
