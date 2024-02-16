@@ -50,7 +50,7 @@ export const DrawerClient = (props: props) => {
 
             <aside>
                 {!showDrawer ? (
-                    <div className="hidden md:grid w-16 text-center absolute left-0">
+                    <div className="hidden md:grid pl-[4.5px] text-center absolute left-0">
                         {props.desktopIcons.map((item, index) => (
                             <IconTextDesktop key={index} {...item} />
                         ))}
@@ -62,7 +62,7 @@ export const DrawerClient = (props: props) => {
                             className="w-64 absolute top-0 left-0 z-10 bg-white"
                             ref={drawerRef}
                         >
-                            <div className="flex pl-5 gap-5 items-center h-16">
+                            <div className="flex pl-4 sm:pl-6 gap-5 items-center h-16">
                                 <button
                                     type="button"
                                     aria-label="drawer"
@@ -84,62 +84,50 @@ export const DrawerClient = (props: props) => {
                                 </Link>
                             </div>
 
-                            <div className="overflow-y-scroll h-[calc(100vh-4rem)] ">
-                                <div className="px-3">
-                                    {props.drawerIcons1.map((item, index) => (
-                                        <IconText key={index} {...item} />
-                                    ))}
+                            <div className="pl-2 sm:pl-4 overflow-y-scroll h-[calc(100vh-4rem)] ">
+                                {props.drawerIcons1.map((item, index) => (
+                                    <IconText key={index} {...item} />
+                                ))}
 
-                                    <hr className="my-3" />
-                                </div>
-                                <div className="px-3">
-                                    <h2 className="drawer-title">You {`>`}</h2>
-                                    {props.drawerIcons2.map((item, index) => (
-                                        <IconText key={index} {...item} />
-                                    ))}
-                                </div>
+                                <hr className="my-3" />
+                                <h2 className="drawer-title">You {`>`}</h2>
+                                {props.drawerIcons2.map((item, index) => (
+                                    <IconText key={index} {...item} />
+                                ))}
 
                                 <hr className="my-3" />
 
-                                <div className="px-3">
-                                    <h2 className="drawer-title">
-                                        Subscriptions
-                                    </h2>
-                                    {props.drawerIcons3.map((item, index) => (
-                                        <IconText
-                                            key={index}
-                                            {...item}
-                                            subscription={true}
-                                        />
-                                    ))}
-                                </div>
+                                <h2 className="drawer-title">Subscriptions</h2>
+                                {props.drawerIcons3.map((item, index) => (
+                                    <IconText
+                                        key={index}
+                                        {...item}
+                                        subscription={true}
+                                    />
+                                ))}
                                 <hr className="my-3" />
 
-                                <div className="px-3">
-                                    <h2 className="drawer-title">Explore</h2>
-                                    {props.drawerIcons4.map((item, index) => (
-                                        <IconText key={index} {...item} />
-                                    ))}
-                                </div>
+                                <h2 className="drawer-title">Explore</h2>
+                                {props.drawerIcons4.map((item, index) => (
+                                    <IconText key={index} {...item} />
+                                ))}
                                 <hr className="my-3" />
-                                <div className="px-3">
-                                    <h2 className="drawer-title">
-                                        More from Youtube
-                                    </h2>
-                                    {props.drawerIcons5.map((item, index) => (
-                                        <IconText
-                                            key={index}
-                                            {...item}
-                                            color="text-red-500"
-                                        />
-                                    ))}
-                                </div>
+
+                                <h2 className="drawer-title">
+                                    More from Youtube
+                                </h2>
+                                {props.drawerIcons5.map((item, index) => (
+                                    <IconText
+                                        key={index}
+                                        {...item}
+                                        color="text-red-500"
+                                    />
+                                ))}
                                 <hr className="my-3" />
-                                <div className="px-3 ">
-                                    {props.drawerIcons6.map((item, index) => (
-                                        <IconText key={index} {...item} />
-                                    ))}
-                                </div>
+
+                                {props.drawerIcons6.map((item, index) => (
+                                    <IconText key={index} {...item} />
+                                ))}
                                 <hr className="my-3" />
 
                                 <div className="px-5 grid gap-3 text-sm text-gray-600 font-semibold">
@@ -225,7 +213,7 @@ export const DrawerClient = (props: props) => {
                                             NFL Sunday Ticket
                                         </Link>
                                     </div>
-                                    <p className="mb-5 text-xs text-gray-400">
+                                    <p className="mb-5 text-gray-400">
                                         &copy; 2024 Google LLC
                                     </p>
                                 </div>

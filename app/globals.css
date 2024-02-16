@@ -4,7 +4,7 @@
 
 @layer components {
     .drawer-title {
-        @apply px-2 font-medium
+        @apply px-2 font-medium text-base tracking-wide
     }
 
     /* main { */
