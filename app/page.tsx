@@ -12,7 +12,7 @@ export default async function Home() {
             <header className="sticky top-0">
                 <nav className="text-2xl flex items-center justify-between gap-4 px-4 sm:px-6">
                     <Drawer />
-                    <div className="hidden ml-24 sm:flex xl:ml-0 items-center gap-2 w-full max-w-2xl">
+                    <div className="hidden sm:flex items-center gap-2 w-full max-w-xl">
                         <div className="w-full">
                             <SearchBar />
                         </div>
@@ -25,10 +25,11 @@ export default async function Home() {
                 </nav>
             </header>
 
-            <main className="m-auto max-w-[2000px]" id="main-home">
-                <div className="flex mt-[9999px]">
-                    <div className="bg-green-100 ">dsa</div>
-                </div>
+            <main
+                className="m-auto max-w-[2000px] px-4 sm:px-6 "
+                id="main-home"
+            >
+                <div className="bg-green-100 ">dsa</div>
 
                 {/* <h2>Recommended: </h2>
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">

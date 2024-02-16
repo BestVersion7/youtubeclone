@@ -36,3 +36,46 @@ export function useOnClickOutside(
         [ref, handler]
     );
 }
+
+export function useMarginLeft(showDrawer: boolean, showDesktopDrawer: boolean) {
+    const handleResize = () => {
+        let widthMargin;
+        const drawer: any = document.getElementById("drawer");
+        const desktopAsideMini: any =
+            document.getElementById("desktop-aside-mini");
+        const asideSmall = document.getElementById("aside-small");
+        const desktopAside: any = document.getElementById("desktop-aside");
+        const mainHome: any = document.querySelector("#main-home");
+
+        if (asideSmall) {
+            const style = window.getComputedStyle(asideSmall, null);
+            if (style.display === "block") {
+                if (desktopAsideMini) {
+                    const style = window.getComputedStyle(
+                        desktopAsideMini,
+                        null
+                    );
+                    if (style.display === "none") {
+                        widthMargin = "0px";
+                    } else {
+                        widthMargin = "45px";
+                    }
+                }
+            } else {
+                if (desktopAside) {
+                    widthMargin = "245px";
+                } else {
+                    widthMargin = "45px";
+                }
+            }
+        }
+
+        mainHome.style.marginLeft = widthMargin;
+    };
+
+    useEffect(() => {
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, [showDrawer, showDesktopDrawer]);
+}

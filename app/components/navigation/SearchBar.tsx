@@ -30,7 +30,7 @@ export const SearchBar = () => {
                     value={searchVal}
                     onChange={handleChange}
                     placeholder="Search"
-                    className="text-base rounded-l-3xl pl-6 py-[.4rem] border-r-2 w-full placeholder:text-gray-500 tracking-wide font-semibold"
+                    className="text-base rounded-l-3xl pl-6 py-[.4rem] border-r-2 w-full placeholder:text-gray-500 tracking-wide font-semibold "
                 />
                 <button
                     type="submit"
