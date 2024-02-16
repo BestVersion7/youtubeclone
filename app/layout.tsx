@@ -1,9 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { SearchBar } from "./components/navigation/SearchBar";
-import { Drawer } from "./components/navigation/Drawer";
-import { RightNav } from "./components/navigation/RightNav";
-import { Voice } from "./components/navigation/Voice";
 
 export const metadata: Metadata = {
     title: "Youtube",
