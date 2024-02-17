@@ -54,12 +54,12 @@ export const RightNav = () => {
                     </button>
                 </div>
 
-                {/* <div className="hidden">
-                    <Voice />
-                </div> */}
-
                 <div>
-                    <button type="button" title="Create" className="icon">
+                    <button
+                        type="button"
+                        title="Create"
+                        className="icon hidden sm:block"
+                    >
                         <RiVideoAddLine />
                     </button>
                 </div>
@@ -67,7 +67,7 @@ export const RightNav = () => {
                     <button
                         type="button"
                         title="Notifications"
-                        className="icon"
+                        className="icon hidden sm:block"
                     >
                         <IoIosNotificationsOutline />
                     </button>

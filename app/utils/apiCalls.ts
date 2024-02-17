@@ -36,7 +36,7 @@ export type ChannelThumbnail = {
     thumbnail: string;
 };
 
-const revalidateTime = 60 * 10;
+const revalidateTime = 60 * 60;
 
 export const get10Videos = async () => {
     const res = await fetch(`${base_url}/api/video`, {

@@ -21,9 +21,9 @@ export default function RootLayout({
             <GoogleAnalytics />
             <body>
                 <header className="z-30 sticky top-0 bg-white ">
-                    <nav className="text-2xl h-16 flex items-center justify-between gap-4 mx-2 sm:mx-3">
+                    <nav className="text-2xl h-16 flex items-center justify-between gap-4 mx-2 sm:mx-3 border-b">
                         <AsideNav modal={true} />
-                        <div className="hidden sm:flex items-center gap-2 w-full max-w-xl ">
+                        <div className="hidden sm:flex items-center gap-2 w-full max-w-2xl ">
                             <div className="w-full ">
                                 <SearchBar />
                             </div>

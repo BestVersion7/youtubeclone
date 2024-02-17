@@ -33,7 +33,7 @@ export const AsideDrawerModal = (props: props) => {
                     type="button"
                     aria-label="drawer"
                     onClick={handleShowDrawer}
-                    className="xl:hidden icon"
+                    className="hidden sm:block xl:hidden icon"
                 >
                     {props.hamburgerIcon}
                 </button>
