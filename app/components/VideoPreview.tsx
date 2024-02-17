@@ -5,14 +5,17 @@ import {
     formatViews,
     formatPublishDate,
     formatShortenTitle,
+    formatVideoLength,
 } from "../utils/format";
 import { GoDotFill } from "react-icons/go";
-import { FaRegUserCircle } from "react-icons/fa";
+import { getThumbnailById } from "../utils/apiCalls";
 
 export const VideoPreview = async (props: VideoType) => {
+    const thumbnail = await getThumbnailById(props.snippet.channelId);
+
     return (
         <div>
-            <div className="overflow-hidden rounded-xl">
+            <div className="overflow-hidden relative rounded-xl">
                 <Link href={`/watch?v=${props.id}`}>
                     <Image
                         sizes="100vw"
@@ -22,19 +25,29 @@ export const VideoPreview = async (props: VideoType) => {
                         width="640"
                         height="480"
                     />
+                    <p className="absolute z-10 bg-black rounded-md text-white right-2 bottom-1 px-1">
+                        {formatVideoLength(props.contentDetails.duration)}
+                    </p>
                 </Link>
             </div>
 
             <div className="grid grid-cols-[37px,auto] gap-3 mt-2">
-                <FaRegUserCircle className="text-4xl text-red-600 mt-1" />
+                <Image
+                    src={thumbnail}
+                    height={88}
+                    width={88}
+                    title={props.snippet.channelTitle}
+                    alt={props.snippet.channelTitle}
+                    className="mt-1 rounded-3xl"
+                />
 
                 <div>
                     <Link href={`/watch?v=${props.id}`}>
                         <h3
-                            className="font-medium"
+                            className="video-title font-medium"
                             title={props.snippet.localized.title}
                         >
-                            {formatShortenTitle(props.snippet.localized.title)}
+                            {props.snippet.localized.title}
                         </h3>
                     </Link>
                     <p>{props.snippet.channelTitle}</p>

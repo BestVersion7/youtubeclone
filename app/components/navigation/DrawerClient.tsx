@@ -80,7 +80,7 @@ export const DrawerClient = (props: props) => {
                     <div>
                         <div className="fixed inset-0 bg-black bg-opacity-20"></div>
                         <div
-                            className="w-64 absolute top-0 left-0 z-10 bg-white"
+                            className="w-64 absolute top-0 left-0 z-20 bg-white"
                             ref={drawerRef}
                         >
                             <div className="flex pl-4 sm:pl-6 gap-5 items-center h-16">
@@ -249,7 +249,7 @@ export const DrawerClient = (props: props) => {
                 {!showDrawerDesktop ? (
                     <div
                         id="desktop-aside"
-                        className="hidden xl:block w-64 absolute left-0 top-16 z-10  bg-white"
+                        className="hidden xl:block w-64 absolute left-0 top-16 z-20  bg-white"
                     >
                         <div className="pl-2 sm:pl-4 overflow-y-scroll h-[calc(100vh-4rem)] ">
                             {props.drawerIcons1.map((item, index) => (

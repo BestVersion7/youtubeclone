@@ -11,8 +11,12 @@
         @apply px-4 sm:px-6 m-auto max-w-[2000px]
     }
 
-    /* main { */
-    /* @apply m-auto max-w-[2000px] */
-    /* @apply m-auto px-4 md:ml-16 */
-    /* } */
+    .video-title {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+        /* number of lines to show */
+        /* max-height: 3em; */
+    }
 }

@@ -24,7 +24,7 @@ export const RightNav = () => {
         <div>
             {showSearch && (
                 <div
-                    className="fixed h-16 top-0 right-0 left-0 z-30  items-center flex justify-between px-4 gap-4 bg-white sm:hidden"
+                    className="fixed h-16 top-0 right-0 left-0 items-center flex justify-between px-4 gap-4 bg-white sm:hidden"
                     ref={searchRef}
                 >
                     <button

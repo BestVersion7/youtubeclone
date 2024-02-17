@@ -7,6 +7,7 @@ export type VideoType = {
     id: string;
     snippet: {
         publishedAt: Date;
+        channelId: string;
         thumbnails: {
             standard: {
                 url: string;
@@ -31,7 +32,11 @@ export type VideoType = {
     };
 };
 
-const revalidateTime = 60 * 60;
+export type ChannelThumbnail = {
+    thumbnail: string;
+};
+
+const revalidateTime = 60 * 10 * 0;
 
 export const get10Videos = async () => {
     const res = await fetch(`${base_url}/api/video`, {
@@ -50,5 +55,15 @@ export const getVideoById = async (videoId: string) => {
         },
     });
     const data: VideoType = await res.json();
+    return data;
+};
+
+export const getThumbnailById = async (channelId: string) => {
+    const res = await fetch(`${base_url}/api/channel?channel_id=${channelId}`, {
+        next: {
+            revalidate: revalidateTime,
+        },
+    });
+    const data: string = await res.json();
     return data;
 };

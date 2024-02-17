@@ -89,3 +89,23 @@ export const formatShortenTitle = (title: string) => {
     const limit = 60;
     return title.length > limit ? `${title.slice(0, limit)}...` : title;
 };
+
+export const formatVideoLength = (time: string) => {
+    const formattedTime = time.slice(2).replace("S", "");
+    const splitM = formattedTime.split(/['M','H']/);
+
+    let hmsTime;
+    if (splitM.length === 1) {
+        hmsTime = `0:${splitM[0].length === 2 ? splitM[0] : `0${splitM[0]}`}`;
+    } else if (splitM.length === 2) {
+        hmsTime = `${splitM[0]}:${
+            splitM[1].length === 2 ? splitM[1] : `0${splitM[1]}`
+        }`;
+    } else {
+        hmsTime = `${splitM[0]}:${
+            splitM[1].length === 2 ? splitM[1] : `0${splitM[1]}`
+        }:${splitM[2].length === 2 ? splitM[2] : `0${splitM[2]}`}`;
+    }
+
+    return hmsTime;
+};

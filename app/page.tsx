@@ -10,7 +10,7 @@ export default async function Home() {
 
     return (
         <>
-            <header className="z-10 sticky top-0 bg-white border-b">
+            <header className="z-30 sticky top-0 bg-white border-b">
                 <nav className="text-2xl flex items-center justify-between gap-4 px-4 sm:px-6">
                     <Drawer />
                     <div className="hidden sm:flex items-center gap-2 w-full max-w-xl">
@@ -28,7 +28,6 @@ export default async function Home() {
 
             <main className="main-home">
                 <div id="main-home">
-                    <h2 className="text-lg">Recommended: </h2>
                     <div className="grid gap-x-4 gap-y-7 sm:grid-cols-2 lg:grid-cols-3 min-[1400px]:grid-cols-4 min-[1720px]:grid-cols-5">
                         {videos.items.map((item, index) => (
                             <VideoPreview key={index} {...item} />
