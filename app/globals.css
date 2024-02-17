@@ -7,10 +7,6 @@
         @apply px-2 font-medium text-base tracking-wide
     }
 
-    .main-home {
-        @apply px-4 sm:px-6 max-w-[2000px] m-auto
-    }
-
     .video-title {
         display: -webkit-box;
         -webkit-box-orient: vertical;
@@ -18,5 +14,9 @@
         -webkit-line-clamp: 2;
         /* number of lines to show */
         /* max-height: 3em; */
+    }
+
+    .icon {
+        @apply hover:bg-gray-200 rounded-full p-3
     }
 }

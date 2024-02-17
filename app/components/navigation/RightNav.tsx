@@ -24,13 +24,14 @@ export const RightNav = () => {
         <div>
             {showSearch && (
                 <div
-                    className="fixed h-16 top-0 right-0 left-0 items-center flex justify-between px-4 gap-4 sm:hidden"
+                    className="fixed bg-white h-16 top-0 right-0 left-0 items-center flex justify-between px-4 sm:hidden"
                     ref={searchRef}
                 >
                     <button
                         aria-label="search"
                         type="button"
                         onClick={() => setShowSearch((val) => !val)}
+                        className="icon"
                     >
                         <IoMdArrowBack />
                     </button>
@@ -41,12 +42,13 @@ export const RightNav = () => {
                 </div>
             )}
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center">
                 <div className="sm:hidden">
                     <button
                         onClick={handleOpenSearchBar}
                         type="button"
                         title="Search"
+                        className="icon"
                     >
                         <IoIosSearch />
                     </button>
@@ -57,18 +59,22 @@ export const RightNav = () => {
                 </div> */}
 
                 <div>
-                    <button type="button" title="Create">
+                    <button type="button" title="Create" className="icon">
                         <RiVideoAddLine />
                     </button>
                 </div>
                 <div>
-                    <button type="button" title="Notifications">
+                    <button
+                        type="button"
+                        title="Notifications"
+                        className="icon"
+                    >
                         <IoIosNotificationsOutline />
                     </button>
                 </div>
 
                 <div>
-                    <button type="button" aria-label="user">
+                    <button type="button" aria-label="user" className="icon">
                         <IoPersonCircleOutline />
                     </button>
                 </div>

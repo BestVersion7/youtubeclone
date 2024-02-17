@@ -35,7 +35,7 @@ export const SearchBar = () => {
                 <button
                     type="submit"
                     title="Search"
-                    className="px-4 bg-slate-50 rounded-r-3xl "
+                    className="px-4 bg-slate-50 rounded-r-3xl hover:bg-slate-100"
                 >
                     <IoIosSearch />
                 </button>

@@ -1,6 +1,6 @@
 import { VideoPreview } from "./components/VideoPreview";
 import { get10Videos } from "./utils/apiCalls";
-import { Drawer } from "./components/navigation/Drawer";
+import { AsideNav } from "./components/navigation/AsideNav";
 import { AsideIconNavMap } from "./components/navigation/AsideIconNavMap";
 import { GoHome } from "react-icons/go";
 import { SiYoutubeshorts } from "react-icons/si";
@@ -13,35 +13,35 @@ export default async function Home() {
     const videos = await get10Videos();
 
     return (
-        <main className="main-home">
-            <div className="flex gap-5">
-                {/* this aside #1 */}
-                <aside className="hidden sm:block xl:hidden ml-[-19.5px]">
-                    <AsideIconNavMap
-                        desktopIcons={[
-                            { label: "Home", icon: <GoHome /> },
-                            {
-                                label: "Shorts",
-                                icon: <SiYoutubeshorts />,
-                                color: "text-red-500",
-                            },
-                            {
-                                label: "Subscriptions",
-                                icon: <MdOutlineSubscriptions />,
-                            },
-                            { label: "Music", icon: <BsMusicNoteBeamed /> },
-                            { label: "You", icon: <CiYoutube /> },
-                            { label: "Downloads", icon: <LiaDownloadSolid /> },
-                        ]}
-                    />
-                </aside>
+        <main>
+            {/* aside small -xl*/}
+            <aside className="hidden fixed md:block xl:hidden mx-1 w-16">
+                <AsideIconNavMap
+                    desktopIcons={[
+                        { label: "Home", icon: <GoHome /> },
+                        {
+                            label: "Shorts",
+                            icon: <SiYoutubeshorts />,
+                            color: "text-red-500",
+                        },
+                        {
+                            label: "Subscriptions",
+                            icon: <MdOutlineSubscriptions />,
+                        },
+                        { label: "Music", icon: <BsMusicNoteBeamed /> },
+                        { label: "You", icon: <CiYoutube /> },
+                        { label: "Downloads", icon: <LiaDownloadSolid /> },
+                    ]}
+                />
+            </aside>
 
-                {/* aside #2 */}
-                <div className="hidden xl:block ">
-                    <Drawer home={true} />
-                </div>
+            {/* aside xl and up */}
+            <aside className="hidden fixed pl-3 sm:pl-4 xl:block top-16 z-40 bg-white w-64 overflow-y-scroll h-[calc(100vh-4rem)] ">
+                <AsideNav modal={false} />
+            </aside>
 
-                <div className="grid gap-x-4  gap-y-7 sm:grid-cols-2 lg:grid-cols-3 min-[1400px]:grid-cols-4 min-[1720px]:grid-cols-5">
+            <div className="max-w-[2000px] m-auto px-4 sm:px-6">
+                <div className=" md:ml-16 xl:ml-64 grid gap-x-4  gap-y-7 sm:grid-cols-2 lg:grid-cols-3 min-[1400px]:grid-cols-4 min-[1720px]:grid-cols-5">
                     {videos.items.map((item, index) => (
                         <VideoPreview key={index} {...item} />
                     ))}

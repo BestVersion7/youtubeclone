@@ -14,7 +14,7 @@ import { MdLightbulbOutline, MdOutlinePodcasts } from "react-icons/md";
 import { GiClothesline } from "react-icons/gi";
 import { LuHexagon } from "react-icons/lu";
 import { TbBrandYoutubeKids } from "react-icons/tb";
-import { CiSettings, CiFlag1, CiTrophy, CiYoutube } from "react-icons/ci";
+import { CiSettings, CiFlag1, CiTrophy } from "react-icons/ci";
 import {
     IoHelpCircleOutline,
     IoPersonCircleOutline,
@@ -22,31 +22,16 @@ import {
 } from "react-icons/io5";
 import { RiFeedbackLine } from "react-icons/ri";
 import { BsMusicNoteBeamed } from "react-icons/bs";
-import { DrawerClient } from "./DrawerClient";
-import { DrawerClientOnlyHome } from "./DrawerClientOnlyHome";
+import { AsideDrawerModal } from "./AsideDrawerModal";
+import { AsideDrawerFixed } from "./AsideDrawerFixed";
 
-export const Drawer = (props: { home: boolean }) => {
+export const AsideNav = (props: { modal: boolean }) => {
     return (
-        <>
-            {props.home ? (
-                <DrawerClientOnlyHome
+        <div>
+            {props.modal ? (
+                <AsideDrawerModal
                     youtubeIcon={<FaYoutube />}
                     hamburgerIcon={<RxHamburgerMenu />}
-                    desktopIcons={[
-                        { label: "Home", icon: <GoHome /> },
-                        {
-                            label: "Shorts",
-                            icon: <SiYoutubeshorts />,
-                            color: "text-red-500",
-                        },
-                        {
-                            label: "Subscriptions",
-                            icon: <MdOutlineSubscriptions />,
-                        },
-                        { label: "Music", icon: <BsMusicNoteBeamed /> },
-                        { label: "You", icon: <CiYoutube /> },
-                        { label: "Downloads", icon: <LiaDownloadSolid /> },
-                    ]}
                     drawerIcons1={[
                         { label: "Home", icon: <GoHome /> },
                         {
@@ -113,9 +98,7 @@ export const Drawer = (props: { home: boolean }) => {
                     ]}
                 />
             ) : (
-                <DrawerClient
-                    youtubeIcon={<FaYoutube />}
-                    hamburgerIcon={<RxHamburgerMenu />}
+                <AsideDrawerFixed
                     drawerIcons1={[
                         { label: "Home", icon: <GoHome /> },
                         {
@@ -182,6 +165,6 @@ export const Drawer = (props: { home: boolean }) => {
                     ]}
                 />
             )}
-        </>
+        </div>
     );
 };

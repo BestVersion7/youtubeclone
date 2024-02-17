@@ -4,7 +4,6 @@ import { VideoType } from "../utils/apiCalls";
 import {
     formatViews,
     formatPublishDate,
-    formatShortenTitle,
     formatVideoLength,
 } from "../utils/format";
 import { GoDotFill } from "react-icons/go";

@@ -5,10 +5,10 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
     const channelId = req.nextUrl.searchParams.get("channel_id");
+    const youtubeChannel = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${process.env.GOOGLE_API_KEY}`;
+
     try {
         if (channelId) {
-            const youtubeChannel = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${process.env.GOOGLE_API_KEY}`;
-
             let thumbnail;
             // find thumbnail
             const findChannel = await prisma.channel.findUnique({

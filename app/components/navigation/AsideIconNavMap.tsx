@@ -7,10 +7,10 @@ type props = {
 
 export const AsideIconNavMap = (props: props) => {
     return (
-        <div className="text-center ">
+        <>
             {props.desktopIcons.map((item, index) => (
                 <IconTextDesktop key={index} {...item} />
             ))}
-        </div>
+        </>
     );
 };

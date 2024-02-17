@@ -7,7 +7,7 @@ export const IconText = (props: IconProps) => {
         <div>
             <Link
                 href="/"
-                className="flex items-center gap-6 py-2 px-2 rounded-lg  hover:bg-gray-200"
+                className="flex items-center gap-6 p-2 rounded-lg  hover:bg-gray-200"
             >
                 <span className={`${props.color ?? "black"} text-2xl`}>
                     {props.icon}
