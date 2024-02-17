@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import GoogleAnalytics from "./components/GoogleAnalytics";
+import { Drawer } from "./components/navigation/Drawer";
+import { SearchBar } from "./components/navigation/SearchBar";
+import { Voice } from "./components/navigation/Voice";
+import { RightNav } from "./components/navigation/RightNav";
 
 export const metadata: Metadata = {
     title: "Youtube",
@@ -15,7 +19,24 @@ export default function RootLayout({
     return (
         <html lang="en">
             <GoogleAnalytics />
-            <body>{children}</body>
+            <body>
+                <header className="z-30 sticky top-0 bg-white ">
+                    <nav className="text-2xl flex items-center justify-between gap-4 px-4 sm:px-6">
+                        <Drawer home={false} />
+                        <div className="hidden sm:flex items-center gap-2 w-full max-w-xl">
+                            <div className="w-full">
+                                <SearchBar />
+                            </div>
+                            <div className="bg-gray-100 px-2 rounded-3xl">
+                                <Voice />
+                            </div>
+                        </div>
+
+                        <RightNav />
+                    </nav>
+                </header>
+                {children}
+            </body>
         </html>
     );
 }
