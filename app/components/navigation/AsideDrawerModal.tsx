@@ -28,7 +28,7 @@ export const AsideDrawerModal = (props: props) => {
 
     return (
         <div>
-            <div className="flex gap-5 items-center ">
+            <div className="flex gap-3 items-center ">
                 <button
                     type="button"
                     aria-label="drawer"
@@ -45,7 +45,11 @@ export const AsideDrawerModal = (props: props) => {
                     {props.hamburgerIcon}
                 </button>
 
-                <Link href="/" title="Youtube Home" className="flex">
+                <Link
+                    href="/"
+                    title="Youtube Home"
+                    className="flex ml-2 sm:ml-0"
+                >
                     <span className="text-3xl text-red-500">
                         {props.youtubeIcon}
                     </span>

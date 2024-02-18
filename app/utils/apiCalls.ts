@@ -1,51 +1,21 @@
+import { VideoType, SuggestionVideoType } from "./types";
+
 let base_url = "http://localhost:3000";
 if (process.env.NODE_ENV === "production") {
     base_url = "https://watchyoutube.vercel.app";
 }
 
-export type VideoType = {
-    id: string;
-    snippet: {
-        publishedAt: Date;
-        channelId: string;
-        thumbnails: {
-            standard: {
-                url: string;
-            };
-            maxres: {
-                url: string;
-            };
-        };
-        channelTitle: string;
+const revalidateTime = 60 * 60 * 1;
 
-        localized: {
-            title: string;
-        };
-    };
-    contentDetails: {
-        duration: string;
-    };
-    statistics: {
-        viewCount: number;
-        likeCount: number;
-        commentCount: number;
-    };
-};
-
-export type ChannelThumbnail = {
-    thumbnail: string;
-};
-
-const revalidateTime = 60 * 60;
-
-export const get10Videos = async () => {
+export const get50Videos = async () => {
     const res = await fetch(`${base_url}/api/video`, {
         next: {
             revalidate: revalidateTime,
         },
     });
-    const data: { items: VideoType[] } = await res.json();
-    return data;
+    const data = await res.json();
+    const data2: VideoType[] = data.items;
+    return data2;
 };
 
 export const getVideoById = async (videoId: string) => {
@@ -54,7 +24,7 @@ export const getVideoById = async (videoId: string) => {
             revalidate: revalidateTime,
         },
     });
-    const data: VideoType = await res.json();
+    const data: { items: VideoType[] } = await res.json();
     return data;
 };
 
@@ -66,4 +36,29 @@ export const getThumbnailById = async (channelId: string) => {
     });
     const data: string = await res.json();
     return data;
+};
+
+export const getSuggestionVideoIdsByCategoryId = async (categoryId: number) => {
+    const res = await fetch(
+        `${base_url}/api/search?category_id=${categoryId}`,
+        {
+            next: {
+                revalidate: revalidateTime,
+            },
+        }
+    );
+    const data = await res.json();
+    const data2: SuggestionVideoType[] = data.items;
+    return data2;
+};
+
+export const getSearchVideo = async (query: string) => {
+    const res = await fetch(`${base_url}/api/search?q=${query}`, {
+        next: {
+            revalidate: revalidateTime,
+        },
+    });
+    const data = await res.json();
+    const data2: SuggestionVideoType[] = data.items;
+    return data2;
 };

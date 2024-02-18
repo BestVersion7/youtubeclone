@@ -19,4 +19,8 @@
     .icon {
         @apply hover:bg-gray-200 rounded-full p-3
     }
+
+    main {
+        @apply max-w-7xl m-auto
+    }
 }

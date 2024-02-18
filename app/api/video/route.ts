@@ -4,10 +4,10 @@ export async function GET(req: NextRequest) {
     try {
         const videoId = req.nextUrl.searchParams.get("video_id");
 
+        // all data
         let url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&maxResults=50&chart=mostPopular&key=${process.env.GOOGLE_API_KEY}`;
 
-        // '%2player'
-        // player => embedHtml
+        // one data
         if (videoId) {
             url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${process.env.GOOGLE_API_KEY}`;
         }
