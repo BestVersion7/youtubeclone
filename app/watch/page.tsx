@@ -19,11 +19,11 @@ export default async function WatchPage(props: {
     //     .filter((item) => item.id !== videoId);
 
     return (
-        <main className="mt-4 max-w-[1600px] m-auto flex flex-col gap-4 lg:gap-6 lg:flex-row">
+        <main className="mt-4 max-w-[1600px] m-auto flex flex-col gap-4 lg:gap-6 lg:grid lg:grid-cols-[_1fr,auto]">
             <div className="">
                 <VideoCard {...videoInfo.items[0]} />
             </div>
-            <aside className=" flex flex-col gap-3 min-w-96 ">
+            <aside className=" flex flex-col gap-3 lg:w-[450px] ">
                 {suggestionVideos.map((item, index) => (
                     <VideoAside key={index} {...item} />
                 ))}

@@ -13,7 +13,7 @@ export const VideoCard = async (props: VideoTypeWithPlayer) => {
     return (
         <div>
             <iframe
-                className="m-auto w-full h-60 md:h-80 md:w-[750px] lg:w-full lg:h-96 xl:h-[470px]"
+                className="m-auto w-full h-60 md:h-80 md:w-[720px] lg:w-full lg:h-96 xl:h-[470px]"
                 src={`https://www.youtube.com/embed/${props.id}`}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
@@ -63,7 +63,7 @@ export const VideoCard = async (props: VideoTypeWithPlayer) => {
                         </p>
                         <p>{formatPublishDate(props.snippet.publishedAt)}</p>
                     </div>
-                    <p className="max-h-24 overflow-y-scroll">
+                    <p className="h-24 overflow-scroll">
                         {props.snippet.description}
                     </p>
                 </div>
