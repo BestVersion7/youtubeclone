@@ -32,6 +32,11 @@ type snippet = {
         title: string;
     };
 };
+type player = {
+    embedHtml: string;
+    embedHeight: number;
+    embedWidth: number;
+};
 
 export type VideoType = {
     id: string;
@@ -46,6 +51,8 @@ export type VideoType = {
     };
 };
 
+export type VideoTypeWithPlayer = VideoType & { player: player };
+
 export type SuggestionVideoType = {
     id: {
         videoId: string;
@@ -54,4 +61,18 @@ export type SuggestionVideoType = {
 
 export type ChannelThumbnail = {
     thumbnail: string;
+};
+
+export type ChannelType = {
+    snippet: {
+        title: string;
+        thumbnails: {
+            default: {
+                url: string;
+            };
+        };
+    };
+    statistics: {
+        subscriberCount: number;
+    };
 };

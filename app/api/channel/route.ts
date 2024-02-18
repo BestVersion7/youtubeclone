@@ -5,10 +5,11 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
     const channelId = req.nextUrl.searchParams.get("channel_id");
+    const thumbnailOnly = req.nextUrl.searchParams.get("thumbnailOnly");
     const youtubeChannel = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${process.env.GOOGLE_API_KEY}`;
 
     try {
-        if (channelId) {
+        if (channelId && thumbnailOnly) {
             let thumbnail;
             // find thumbnail
             const findChannel = await prisma.channel.findUnique({
@@ -37,6 +38,11 @@ export async function GET(req: NextRequest) {
             }
 
             return NextResponse.json(thumbnail);
+        } else if (channelId) {
+            const res = await fetch(youtubeChannel);
+            const data = await res.json();
+
+            return NextResponse.json(data);
         } else {
             return NextResponse.json("bad req", { status: 400 });
         }

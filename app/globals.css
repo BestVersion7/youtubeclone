@@ -16,11 +16,20 @@
         /* max-height: 3em; */
     }
 
+    .video-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+        /* number of lines to show */
+        /* max-height: 3em; */
+    }
+
     .icon {
         @apply hover:bg-gray-200 rounded-full p-3
     }
 
     main {
-        @apply max-w-7xl m-auto py-2 px-4 sm:px-6
+        @apply py-2 px-4 sm:px-6
     }
 }

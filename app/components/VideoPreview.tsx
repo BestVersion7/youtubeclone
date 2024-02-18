@@ -7,10 +7,10 @@ import {
     formatVideoLength,
 } from "../utils/format";
 import { GoDotFill } from "react-icons/go";
-import { getThumbnailById } from "../utils/apiCalls";
+import { getChannelThumbnailById } from "../utils/apiCalls";
 
 export const VideoPreview = async (props: VideoType) => {
-    const thumbnail = await getThumbnailById(props.snippet.channelId);
+    const thumbnail = await getChannelThumbnailById(props.snippet.channelId);
 
     return (
         <div>
@@ -52,7 +52,7 @@ export const VideoPreview = async (props: VideoType) => {
                     <p>{props.snippet.channelTitle}</p>
 
                     <div className="flex items-center gap-1">
-                        <p>{formatViews(props.statistics.viewCount)}</p>
+                        <p>{formatViews(props.statistics.viewCount)} views</p>
                         <GoDotFill className="text-[7px]" />
                         <p>{formatPublishDate(props.snippet.publishedAt)}</p>
                     </div>

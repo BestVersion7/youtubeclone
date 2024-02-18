@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { VideoType } from "../utils/types";
+import { VideoTypeWithPlayer } from "../utils/types";
+import { SiYoutubeshorts } from "react-icons/si";
 
 import {
     formatViews,
@@ -9,11 +10,19 @@ import {
 } from "../utils/format";
 import { GoDotFill } from "react-icons/go";
 
-export const VideoAside = async (props: VideoType) => {
+export const VideoAside = async (props: VideoTypeWithPlayer) => {
+    // props.player.embedHeight > 800 ? (
     return (
         <div className="grid grid-cols-[170px,_auto] gap-4">
             <div className="relative">
-                <Link href={`/watch?v=${props.id}`}>
+                {props.player.embedHeight > 800}
+                <Link
+                    href={`${
+                        props.player.embedHeight > 800
+                            ? `/shorts/${props.id}`
+                            : `/watch?v=${props.id}`
+                    }`}
+                >
                     <Image
                         sizes="100vw"
                         alt="preview"
@@ -22,8 +31,18 @@ export const VideoAside = async (props: VideoType) => {
                         width="170"
                         height="120"
                     />
-                    <p className="absolute z-10 bg-black rounded-md text-white right-2 bottom-1 px-1">
-                        {formatVideoLength(props.contentDetails.duration)}
+                    <p className="flex absolute z-10 rounded-md right-2 bottom-1 ">
+                        {props.player.embedHeight > 800 ? (
+                            <span className="text-red-400 ">
+                                <SiYoutubeshorts />
+                            </span>
+                        ) : (
+                            <span className="bg-black px-1 text-white">
+                                {formatVideoLength(
+                                    props.contentDetails.duration
+                                )}
+                            </span>
+                        )}
                     </p>
                 </Link>
             </div>

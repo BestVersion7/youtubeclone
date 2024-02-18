@@ -4,12 +4,12 @@ export const formatViews = (views: number) => {
     let count;
     if (views > million) {
         const rounded = (views / million).toFixed(1);
-        count = `${rounded}M views`;
+        count = `${rounded}M`;
     } else if (views > thousand) {
         const rounded = (views / thousand).toFixed(0);
-        count = `${rounded}K views`;
+        count = `${rounded}K`;
     } else {
-        count = `${views} views`;
+        count = `${views}`;
     }
     return count;
 };
@@ -111,4 +111,20 @@ export const formatVideoLength = (time: string) => {
     }
 
     return hmsTime;
+};
+
+export const formatEmbedIframe = (iframeString: string) => {
+    const srcIndex = iframeString.indexOf('src="');
+
+    const endIndex = iframeString.indexOf('"', srcIndex + 5);
+    // extract src
+    const srcValue = iframeString.slice(srcIndex + 5, endIndex);
+    // append ?autoplay=1
+    const newSrcValue = srcValue + "?autoplay=1";
+    // replace original
+    const modifiedIFrameString =
+        iframeString.slice(0, srcIndex + 5) +
+        newSrcValue +
+        iframeString.slice(endIndex);
+    return modifiedIFrameString;
 };

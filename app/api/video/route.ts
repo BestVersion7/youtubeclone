@@ -11,13 +11,18 @@ export async function GET(req: NextRequest) {
 
         // one data
         if (videoId) {
-            url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${process.env.GOOGLE_API_KEY}`;
+            url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics%2Cplayer&maxWidth=${480}&id=${videoId}&key=${
+                process.env.GOOGLE_API_KEY
+            }`;
         }
 
         // by categoryId
         if (categoryId) {
-            url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=${limit}&videoCategoryId=${categoryId}&key=${process.env.GOOGLE_API_KEY}`;
+            url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics%2Cplayer&maxWidth=${480}&chart=mostPopular&maxResults=${limit}&videoCategoryId=${categoryId}&key=${
+                process.env.GOOGLE_API_KEY
+            }`;
         }
+
         const res = await fetch(url);
         const data = await res.json();
 

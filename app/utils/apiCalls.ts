@@ -1,4 +1,9 @@
-import { VideoType, SuggestionVideoType } from "./types";
+import {
+    VideoType,
+    VideoTypeWithPlayer,
+    SuggestionVideoType,
+    ChannelType,
+} from "./types";
 
 let base_url = "http://localhost:3000";
 if (process.env.NODE_ENV === "production") {
@@ -26,26 +31,38 @@ export const get20VideosByCategoryId = async (categoryId: number) => {
         }
     );
     const data = await res.json();
-    const data2: VideoType[] = data.items;
+    const data2: VideoTypeWithPlayer[] = data.items;
     return data2;
 };
 
 export const getVideoById = async (videoId: string) => {
     const res = await fetch(`${base_url}/api/video?video_id=${videoId}`, {
-        cache: "no-cache",
+        next: { revalidate: revalidateTime },
     });
-    const data: { items: VideoType[] } = await res.json();
+    const data: { items: VideoTypeWithPlayer[] } = await res.json();
     return data;
 };
 
-export const getThumbnailById = async (channelId: string) => {
-    const res = await fetch(`${base_url}/api/channel?channel_id=${channelId}`, {
-        next: {
-            revalidate: revalidateTime,
-        },
-    });
+export const getChannelThumbnailById = async (channelId: string) => {
+    const res = await fetch(
+        `${base_url}/api/channel?channel_id=${channelId}&thumbnailOnly=1`,
+        {
+            next: {
+                revalidate: revalidateTime,
+            },
+        }
+    );
     const data: string = await res.json();
     return data;
+};
+
+export const getChannelById = async (channelId: string) => {
+    const res = await fetch(`${base_url}/api/channel?channel_id=${channelId}`, {
+        cache: "no-cache",
+    });
+    const data = await res.json();
+    const data2: ChannelType = await data.items[0];
+    return data2;
 };
 
 export const getSearchVideo = async (query: string) => {

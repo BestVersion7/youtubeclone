@@ -17,6 +17,16 @@ export const SearchBar = () => {
         setSearchVal(e.target.value);
     };
 
+    // the cost for search is too HIGH at 100 quota
+    // const suggestionVideoIds = await getSearchVideo(
+    //     'input'
+    // );
+    // const mappedIds = suggestionVideoIds
+    //     .map((item) => item.id.videoId)
+    //     .join("%2c");
+
+    // const suggestionVideos = await getVideoById(mappedIds);
+
     // useOnClickOutside(formRef, () => setSearchVal(() =>))
 
     return (
