@@ -18,10 +18,13 @@ export const get50Videos = async () => {
     return data2;
 };
 
-export const get20VideosNotSuggested = async () => {
-    const res = await fetch(`${base_url}/api/video?limit=20`, {
-        cache: "no-cache",
-    });
+export const get20VideosByCategoryId = async (categoryId: number) => {
+    const res = await fetch(
+        `${base_url}/api/video?category_id=${categoryId}&limit=20`,
+        {
+            cache: "no-cache",
+        }
+    );
     const data = await res.json();
     const data2: VideoType[] = data.items;
     return data2;
@@ -43,16 +46,6 @@ export const getThumbnailById = async (channelId: string) => {
     });
     const data: string = await res.json();
     return data;
-};
-
-export const getSuggestionVideoIdsByCategoryId = async (categoryId: number) => {
-    const res = await fetch(
-        `${base_url}/api/search?category_id=${categoryId}`,
-        { cache: "no-cache" }
-    );
-    const data = await res.json();
-    const data2: SuggestionVideoType[] = data.items;
-    return data2;
 };
 
 export const getSearchVideo = async (query: string) => {

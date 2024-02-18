@@ -1,10 +1,6 @@
 import { VideoAside } from "../components/VideoAside";
 import { VideoCard } from "../components/VideoCard";
-import {
-    getVideoById,
-    getSuggestionVideoIdsByCategoryId,
-    get20VideosNotSuggested,
-} from "../utils/apiCalls";
+import { getVideoById, get20VideosByCategoryId } from "../utils/apiCalls";
 
 export default async function WatchPage(props: {
     searchParams: { v: string };
@@ -13,8 +9,8 @@ export default async function WatchPage(props: {
     const videoInfo = await getVideoById(videoId);
 
     // the cost for search is too HIGH at 100 quota
-    // const suggestionVideoIds = await getSuggestionVideoIdsByCategoryId(
-    //     videoInfo.items[0].snippet.categoryId
+    // const suggestionVideoIds = await getSearchVideo(
+    //     'input'
     // );
     // const mappedIds = suggestionVideoIds
     //     .map((item) => item.id.videoId)
@@ -22,7 +18,9 @@ export default async function WatchPage(props: {
 
     // const suggestionVideos = await getVideoById(mappedIds);
 
-    const suggestionVideos = await get20VideosNotSuggested();
+    const suggestionVideos = await get20VideosByCategoryId(
+        videoInfo.items[0].snippet.categoryId
+    );
 
     // filter
     suggestionVideos.map((item, index) => {
