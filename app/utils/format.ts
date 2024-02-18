@@ -91,10 +91,13 @@ export const formatShortenTitle = (title: string) => {
 };
 
 export const formatVideoLength = (time: string) => {
+    if (time === "P0D") {
+        return "Live";
+    }
     const formattedTime = time.slice(2).replace("S", "");
     const splitM = formattedTime.split(/['M','H']/);
-
     let hmsTime;
+
     if (splitM.length === 1) {
         hmsTime = `0:${splitM[0].length === 2 ? splitM[0] : `0${splitM[0]}`}`;
     } else if (splitM.length === 2) {

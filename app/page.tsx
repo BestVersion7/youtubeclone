@@ -13,7 +13,7 @@ export default async function Home() {
     const videos = await get50Videos();
 
     return (
-        <main className="max-w-[2000px]">
+        <main className="max-w-[2000px] p-0">
             {/* aside small -xl*/}
             <aside className="hidden fixed left-0 md:block xl:hidden mx-1 w-16">
                 <AsideIconNavMap

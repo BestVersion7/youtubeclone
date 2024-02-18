@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === "production") {
 const revalidateTime = 60 * 60 * 1;
 
 export const get50Videos = async () => {
-    const res = await fetch(`${base_url}/api/video`, {
+    const res = await fetch(`${base_url}/api/video?limit=50`, {
         next: {
             revalidate: revalidateTime,
         },
@@ -18,11 +18,18 @@ export const get50Videos = async () => {
     return data2;
 };
 
+export const get20VideosNotSuggested = async () => {
+    const res = await fetch(`${base_url}/api/video?limit=20`, {
+        cache: "no-cache",
+    });
+    const data = await res.json();
+    const data2: VideoType[] = data.items;
+    return data2;
+};
+
 export const getVideoById = async (videoId: string) => {
     const res = await fetch(`${base_url}/api/video?video_id=${videoId}`, {
-        next: {
-            revalidate: revalidateTime,
-        },
+        cache: "no-cache",
     });
     const data: { items: VideoType[] } = await res.json();
     return data;
@@ -41,11 +48,7 @@ export const getThumbnailById = async (channelId: string) => {
 export const getSuggestionVideoIdsByCategoryId = async (categoryId: number) => {
     const res = await fetch(
         `${base_url}/api/search?category_id=${categoryId}`,
-        {
-            next: {
-                revalidate: revalidateTime,
-            },
-        }
+        { cache: "no-cache" }
     );
     const data = await res.json();
     const data2: SuggestionVideoType[] = data.items;

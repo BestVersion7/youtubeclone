@@ -21,6 +21,6 @@
     }
 
     main {
-        @apply max-w-7xl m-auto
+        @apply max-w-7xl m-auto py-2 px-4 sm:px-6
     }
 }

@@ -13,6 +13,12 @@ type snippet = {
     tags: string[];
     categoryId: number;
     thumbnails: {
+        default: {
+            url: string;
+        };
+        medium: {
+            url: string;
+        };
         standard: {
             url: string;
         };
