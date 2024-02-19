@@ -76,3 +76,15 @@ export type ChannelType = {
         subscriberCount: number;
     };
 };
+
+export type CommentType = {
+    snippet: {
+        topLevelComment: {
+            snippet: {
+                publishedAt: Date;
+                likeCount: number;
+                textDisplay: string;
+            };
+        };
+    };
+};

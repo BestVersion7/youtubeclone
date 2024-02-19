@@ -119,12 +119,16 @@ export const formatEmbedIframe = (iframeString: string) => {
     const endIndex = iframeString.indexOf('"', srcIndex + 5);
     // extract src
     const srcValue = iframeString.slice(srcIndex + 5, endIndex);
-    // append ?autoplay=1
+
+    // append autoplay
     const newSrcValue = srcValue + "?autoplay=1";
-    // replace original
+
     const modifiedIFrameString =
         iframeString.slice(0, srcIndex + 5) +
         newSrcValue +
-        iframeString.slice(endIndex);
+        '"' +
+        'class= "h-calc[100vh-6rem] max-h-[580px] w-[330px] rounded-xl"' +
+        iframeString.slice(endIndex + 1);
+
     return modifiedIFrameString;
 };
