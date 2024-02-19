@@ -85,9 +85,8 @@ export const formatPublishDate = (date: Date) => {
     return age;
 };
 
-export const formatShortenTitle = (title: string) => {
-    const limit = 60;
-    return title.length > limit ? `${title.slice(0, limit)}...` : title;
+export const formatShortenDesc = (desc: string, limit: number) => {
+    return desc.length > limit ? `${desc.slice(0, limit)}...` : desc;
 };
 
 export const formatVideoLength = (time: string) => {
@@ -121,8 +120,7 @@ export const formatEmbedIframe = (iframeString: string) => {
     const srcValue = iframeString.slice(srcIndex + 5, endIndex);
 
     // append autoplay
-    // + "?autoplay=1";
-    const newSrcValue = srcValue;
+    const newSrcValue = srcValue + "?autoplay=1";
 
     const modifiedIFrameString =
         iframeString.slice(0, srcIndex + 5) +

@@ -1,7 +1,6 @@
 import {
     VideoType,
     VideoTypeWithPlayer,
-    SuggestionVideoType,
     ChannelType,
     CommentType,
 } from "./types";
@@ -28,7 +27,9 @@ export const get20VideosByCategoryId = async (categoryId: number) => {
     const res = await fetch(
         `${base_url}/api/video?category_id=${categoryId}&limit=20`,
         {
-            cache: "no-cache",
+            next: {
+                revalidate: revalidateTime,
+            },
         }
     );
     const data = await res.json();
@@ -38,7 +39,7 @@ export const get20VideosByCategoryId = async (categoryId: number) => {
 
 export const getVideoById = async (videoId: string) => {
     const res = await fetch(`${base_url}/api/video?video_id=${videoId}`, {
-        next: { revalidate: revalidateTime },
+        cache: "no-cache",
     });
     const data = await res.json();
     const data2: VideoTypeWithPlayer = await data.items[0];
@@ -72,20 +73,21 @@ export const getChannelThumbnailById = async (channelId: string) => {
 
 export const getChannelById = async (channelId: string) => {
     const res = await fetch(`${base_url}/api/channel?channel_id=${channelId}`, {
-        cache: "no-cache",
+        next: { revalidate: revalidateTime },
     });
     const data = await res.json();
     const data2: ChannelType = await data.items[0];
     return data2;
 };
 
-export const getSearchVideo = async (query: string) => {
-    const res = await fetch(`${base_url}/api/search?q=${query}`, {
-        next: {
-            revalidate: revalidateTime,
-        },
-    });
-    const data = await res.json();
-    const data2: SuggestionVideoType[] = data.items;
-    return data2;
-};
+// unused
+// export const getSearchVideo = async (query: string) => {
+//     const res = await fetch(`${base_url}/api/search?q=${query}`, {
+//         next: {
+//             revalidate: revalidateTime,
+//         },
+//     });
+//     const data = await res.json();
+//     const data2: SuggestionVideoType[] = data.items;
+//     return data2;
+// };
