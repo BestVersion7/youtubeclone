@@ -27,23 +27,23 @@ export const AsideDrawerModal = (props: props) => {
     };
 
     return (
-        <div>
+        <div className="">
             <div className="flex gap-3 items-center ">
                 <button
                     type="button"
                     aria-label="drawer"
                     onClick={handleShowDrawer}
-                    className="hidden sm:block xl:hidden icon"
+                    className="hidden sm:block  icon"
                 >
                     {props.hamburgerIcon}
                 </button>
-                <button
+                {/* <button
                     type="button"
                     aria-label="drawer"
                     className="hidden xl:block icon"
                 >
                     {props.hamburgerIcon}
-                </button>
+                </button> */}
 
                 <Link
                     href="/"
@@ -59,7 +59,7 @@ export const AsideDrawerModal = (props: props) => {
                 </Link>
             </div>
 
-            <div className="xl:hidden">
+            <div className="">
                 {showDrawer && (
                     <div className="">
                         <div className="fixed inset-0 bg-black bg-opacity-20"></div>
