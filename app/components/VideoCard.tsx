@@ -14,7 +14,7 @@ export const VideoCard = async (props: VideoTypeWithPlayer) => {
         <div>
             <iframe
                 className="m-auto w-full h-60 md:h-80 md:w-[720px] lg:w-full lg:h-96 xl:h-[470px]"
-                src={`https://www.youtube.com/embed/${props.id}`}
+                src={`https://www.youtube.com/embed/${props.id}?autoplay=1`}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
             ></iframe>

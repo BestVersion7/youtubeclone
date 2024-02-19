@@ -121,13 +121,14 @@ export const formatEmbedIframe = (iframeString: string) => {
     const srcValue = iframeString.slice(srcIndex + 5, endIndex);
 
     // append autoplay
-    const newSrcValue = srcValue + "?autoplay=1";
+    // + "?autoplay=1";
+    const newSrcValue = srcValue;
 
     const modifiedIFrameString =
         iframeString.slice(0, srcIndex + 5) +
         newSrcValue +
         '"' +
-        'class= "h-calc[100vh-6rem] max-h-[580px] w-[330px] rounded-xl"' +
+        'class= "shorts-iframe"' +
         iframeString.slice(endIndex + 1);
 
     return modifiedIFrameString;
