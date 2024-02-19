@@ -86,7 +86,10 @@ export const formatPublishDate = (date: Date) => {
 };
 
 export const formatShortenDesc = (desc: string, limit: number) => {
-    return desc.length > limit ? `${desc.slice(0, limit)}...` : desc;
+    const shortenDesc = desc.slice(0, limit);
+
+    const threeLinesDesc = shortenDesc.split("\n").slice(0, 3).join("\n");
+    return threeLinesDesc;
 };
 
 export const formatVideoLength = (time: string) => {

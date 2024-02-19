@@ -46,15 +46,19 @@ export const getVideoById = async (videoId: string) => {
     return data2;
 };
 
-export const get20CommentsByVideoId = async (videoId: string) => {
+export const get20CommentsByVideoId = async (
+    videoId: string,
+    signal: AbortSignal
+) => {
     const res = await fetch(
         `${base_url}/api/comment?video_id=${videoId}&limit=20`,
         {
             cache: "no-cache",
+            signal: signal,
         }
     );
     const data = await res.json();
-    const data2: CommentType[] = await data.items[0];
+    const data2: { items: CommentType[] } = await data;
     return data2;
 };
 

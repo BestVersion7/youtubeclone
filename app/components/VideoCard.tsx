@@ -3,15 +3,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { getChannelById } from "../utils/apiCalls";
 import { VideoDesc } from "./VideoDesc";
-import {
-    formatViews,
-    formatPublishDate,
-    formatEmbedIframe,
-    formatShortenDesc,
-} from "../utils/format";
+import { formatViews, formatPublishDate } from "../utils/format";
 import { LuThumbsUp, LuThumbsDown, LuDot } from "react-icons/lu";
 import { IoIosShareAlt } from "react-icons/io";
 import { MdOutlineFileDownload } from "react-icons/md";
+import { CommentSection } from "./CommentSection";
 
 let autoplay = "";
 if (process.env.NODE_ENV === "production") {
@@ -23,12 +19,14 @@ export const VideoCard = async (props: VideoTypeWithPlayer) => {
 
     return (
         <div>
-            <iframe
-                className="m-auto rounded-lg w-full h-60 md:h-80 md:w-[720px] lg:w-full lg:h-96 xl:h-[470px]"
-                src={`https://www.youtube.com/embed/${props.id}${autoplay}`}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-            ></iframe>
+            <div className="relative w-full pb-[56.25%]">
+                <iframe
+                    className="absolute h-full w-full rounded-2xl top-0 left-0"
+                    src={`https://www.youtube.com/embed/${props.id}${autoplay}`}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                ></iframe>
+            </div>
 
             <h2 className="my-2 font-semibold text-lg">
                 {props.snippet.title}
@@ -116,19 +114,16 @@ export const VideoCard = async (props: VideoTypeWithPlayer) => {
                     <div className="whitespace-pre-line video-description">
                         <VideoDesc desc={props.snippet.description} />
                     </div>
-                    {/* <p className="h-24 overflow-y-scroll break-words w-full">
-                    {props.snippet.description}
-                </p> */}
                 </div>
             </div>
             <br />
-            {/* Comments */}
+            {/* Comments this will be client rendered */}
             <div>
                 <h3 className="text-lg font-bold">
                     {Number(props.statistics.commentCount).toLocaleString()}{" "}
                     Comments
                 </h3>
-                {/* <Comment /> */}
+                <CommentSection />
             </div>
         </div>
     );

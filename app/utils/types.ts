@@ -81,6 +81,8 @@ export type CommentType = {
     snippet: {
         topLevelComment: {
             snippet: {
+                authorProfileImageUrl: string;
+                authorDisplayName: string;
                 publishedAt: Date;
                 likeCount: number;
                 textDisplay: string;

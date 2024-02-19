@@ -59,7 +59,7 @@ export const AsideDrawerModal = (props: props) => {
                 </Link>
             </div>
 
-            <div className="xl:ml-36 xl:hidden">
+            <div className="xl:hidden">
                 {showDrawer && (
                     <div className="">
                         <div className="fixed inset-0 bg-black bg-opacity-20"></div>
@@ -67,7 +67,7 @@ export const AsideDrawerModal = (props: props) => {
                             className="w-64 absolute top-0 left-0 z-20 bg-white"
                             ref={drawerRef}
                         >
-                            <div className="flex gap-5 items-center h-16 pl-2 sm:pl-3">
+                            <div className="flex gap-3 items-center h-16 ml-3">
                                 <button
                                     type="button"
                                     aria-label="drawer"

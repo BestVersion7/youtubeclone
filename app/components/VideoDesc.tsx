@@ -1,14 +1,13 @@
 "use client";
 import { useState } from "react";
+import { formatShortenDesc } from "../utils/format";
 
 export const VideoDesc = (props: { desc: string }) => {
     const [expand, setExpand] = useState(false);
     const limit = 220;
 
     // format desc to limit and add more after it
-    const shortenDesc = props.desc.slice(0, limit);
-
-    const threeLinesDesc = shortenDesc.split("\n").slice(0, 3).join("\n");
+    const threeLinesDesc = formatShortenDesc(props.desc, limit);
 
     return (
         <p className="video-desc break-words">
@@ -27,13 +26,15 @@ export const VideoDesc = (props: { desc: string }) => {
                 <>
                     {threeLinesDesc}
 
-                    <button
-                        type="button"
-                        onClick={() => setExpand(() => true)}
-                        className="text-orange-500 font-bold"
-                    >
-                        ...more
-                    </button>
+                    {props.desc.length > limit && (
+                        <button
+                            type="button"
+                            onClick={() => setExpand(() => true)}
+                            className="text-orange-500 font-bold"
+                        >
+                            ...more
+                        </button>
+                    )}
                 </>
             )}
         </p>
