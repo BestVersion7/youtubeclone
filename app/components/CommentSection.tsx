@@ -5,7 +5,7 @@ import { CommentType } from "../utils/types";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { formatPublishDate } from "../utils/format";
-import { VideoDesc } from "./VideoDesc";
+import { CommentDesc } from "./CommentDesc";
 import { LuThumbsUp, LuThumbsDown } from "react-icons/lu";
 import { ImSpinner2 } from "react-icons/im";
 
@@ -82,8 +82,8 @@ export const CommentSection = () => {
                                         .publishedAt
                                 )}
                             </span>
-                            <div className="whitespace-pre-line">
-                                <VideoDesc
+                            <div>
+                                <CommentDesc
                                     desc={
                                         item.snippet.topLevelComment.snippet
                                             .textDisplay

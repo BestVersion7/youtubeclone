@@ -1,6 +1,7 @@
 import { VideoAside } from "../components/VideoAside";
 import { VideoCard } from "../components/VideoCard";
 import { getVideoById, get20VideosByCategoryId } from "../utils/apiCalls";
+import { CommentSection } from "../components/CommentSection";
 
 export default async function WatchPage(props: {
     searchParams: { v: string };
@@ -19,7 +20,15 @@ export default async function WatchPage(props: {
 
     return (
         <main className="mt-4 max-w-[1600px] m-auto flex flex-col gap-4 lg:gap-6 lg:grid lg:grid-cols-[_1fr,auto]">
-            <VideoCard {...videoInfo} />
+            <div>
+                <VideoCard {...videoInfo} />
+                {/* Comments this will be client rendered */}
+                <h3 className="text-lg font-bold">
+                    {Number(videoInfo.statistics.commentCount).toLocaleString()}{" "}
+                    Comments
+                </h3>
+                <CommentSection />
+            </div>
             <aside className=" flex flex-col gap-3 lg:w-[350px] xl:w-[450px]">
                 {suggestionVideos.map((item, index) => (
                     <VideoAside key={index} {...item} />

@@ -1,13 +1,11 @@
 import { VideoTypeWithPlayer } from "../utils/types";
-import Link from "next/link";
 import Image from "next/image";
 import { getChannelById } from "../utils/apiCalls";
 import { VideoDesc } from "./VideoDesc";
 import { formatViews, formatPublishDate } from "../utils/format";
-import { LuThumbsUp, LuThumbsDown, LuDot } from "react-icons/lu";
+import { LuThumbsUp, LuThumbsDown } from "react-icons/lu";
 import { IoIosShareAlt } from "react-icons/io";
 import { MdOutlineFileDownload } from "react-icons/md";
-import { CommentSection } from "./CommentSection";
 
 let autoplay = "";
 if (process.env.NODE_ENV === "production") {
@@ -48,7 +46,7 @@ export const VideoCard = async (props: VideoTypeWithPlayer) => {
                             <p className="font-medium">
                                 {channelInfo.snippet.title}
                             </p>
-                            <p className="font-thin">
+                            <p className="font-thin text-sm">
                                 {formatViews(
                                     channelInfo.statistics.subscriberCount
                                 )}{" "}
@@ -58,7 +56,7 @@ export const VideoCard = async (props: VideoTypeWithPlayer) => {
 
                         <button
                             type="button"
-                            className="px-4 ml-4 rounded-3xl bg-black text-white py-2"
+                            className="px-3 ml-4 rounded-3xl bg-black text-white py-2"
                         >
                             Subscribe
                         </button>
@@ -69,7 +67,7 @@ export const VideoCard = async (props: VideoTypeWithPlayer) => {
                         <div className="flex  bg-gray-100 rounded-full ">
                             <button
                                 type="button"
-                                className="flex px-3 gap-2 rounded-l-full items-center hover:bg-gray-200"
+                                className="flex px-2 gap-1 rounded-l-full items-center hover:bg-gray-200"
                             >
                                 <LuThumbsUp className="" />
                                 {formatViews(props.statistics.likeCount)}
@@ -77,7 +75,7 @@ export const VideoCard = async (props: VideoTypeWithPlayer) => {
                             <span className="text-gray-300">|</span>
                             <button
                                 type="button"
-                                className="flex px-3 rounded-r-full items-center hover:bg-gray-200"
+                                className="flex px-2 rounded-r-full items-center hover:bg-gray-200"
                                 aria-label="dislike"
                             >
                                 <LuThumbsDown />
@@ -115,15 +113,6 @@ export const VideoCard = async (props: VideoTypeWithPlayer) => {
                         <VideoDesc desc={props.snippet.description} />
                     </div>
                 </div>
-            </div>
-            <br />
-            {/* Comments this will be client rendered */}
-            <div>
-                <h3 className="text-lg font-bold">
-                    {Number(props.statistics.commentCount).toLocaleString()}{" "}
-                    Comments
-                </h3>
-                <CommentSection />
             </div>
         </div>
     );
