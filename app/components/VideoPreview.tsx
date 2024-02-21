@@ -35,14 +35,20 @@ export const VideoPreview = async (props: VideoType) => {
             </div>
 
             <div className="grid grid-cols-[37px,auto] gap-3 mt-2">
-                <Image
+                <img
+                    src={thumbnail}
+                    title={props.snippet.channelTitle}
+                    alt={props.snippet.channelTitle}
+                    className="mt-1 rounded-3xl w-20 h-20"
+                />
+                {/* <Image
                     src={thumbnail}
                     height={88}
                     width={88}
                     title={props.snippet.channelTitle}
                     alt={props.snippet.channelTitle}
                     className="mt-1 rounded-3xl"
-                />
+                /> */}
 
                 <div>
                     <Link href={`/watch?v=${props.id}`}>
