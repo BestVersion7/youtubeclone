@@ -11,41 +11,37 @@ import {
 import { GoDotFill } from "react-icons/go";
 
 export const VideoAside = async (props: VideoTypeWithPlayer) => {
-    // props.player.embedHeight > 800 ? (
     return (
         <div className="grid grid-cols-[170px,_auto] gap-4">
-            <div className="relative">
-                {props.player.embedHeight > 800}
-                <Link
-                    href={`${
-                        props.player.embedHeight > 800
-                            ? `/shorts/${props.id}`
-                            : `/watch?v=${props.id}`
-                    }`}
-                >
-                    <Image
-                        sizes="100vw"
-                        alt="preview"
-                        src={props.snippet.thumbnails.medium.url}
-                        className="rounded-xl"
-                        width="170"
-                        height="120"
-                    />
-                    <p className="flex absolute z-10 rounded-md right-2 bottom-1 ">
-                        {props.player.embedHeight > 800 ? (
-                            <span className="text-red-400 ">
-                                <SiYoutubeshorts />
-                            </span>
-                        ) : (
-                            <span className="bg-black px-1 text-white">
-                                {formatVideoLength(
-                                    props.contentDetails.duration
-                                )}
-                            </span>
-                        )}
-                    </p>
-                </Link>
-            </div>
+            <Link
+                href={`${
+                    props.player.embedHeight > 800
+                        ? `/shorts/${props.id}`
+                        : `/watch?v=${props.id}`
+                }`}
+                className="relative"
+            >
+                <Image
+                    sizes="100vw"
+                    alt="preview"
+                    src={props.snippet.thumbnails.medium.url}
+                    className="rounded-xl object-contain w-full"
+                    // fill
+                    width={170}
+                    height={120}
+                />
+                <p className="flex absolute z-10 rounded-md right-2 bottom-1 ">
+                    {props.player.embedHeight > 800 ? (
+                        <span className="text-red-400 ">
+                            <SiYoutubeshorts />
+                        </span>
+                    ) : (
+                        <span className="bg-black px-1 text-white">
+                            {formatVideoLength(props.contentDetails.duration)}
+                        </span>
+                    )}
+                </p>
+            </Link>
 
             <div>
                 <Link href={`/watch?v=${props.id}`}>

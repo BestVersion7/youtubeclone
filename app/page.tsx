@@ -40,6 +40,14 @@ export default async function Home() {
                 <AsideNav modal={false} />
             </aside>
 
+            {/* shorts
+               <section>
+               <h2>
+                    <SiYoutubeshorts className="bg-red-500"/>
+                    Shorts
+               </h2>
+                    <VideoPreview />
+               </section> */}
             <div className="py-2 px-4 sm:px-6 md:ml-16 xl:ml-64 min-[2550px]:ml-0 grid gap-x-4 gap-y-7 sm:grid-cols-2 lg:grid-cols-3 min-[1400px]:grid-cols-4 min-[1720px]:grid-cols-5">
                 {videos.map((item, index) => (
                     <VideoPreview key={index} {...item} />
