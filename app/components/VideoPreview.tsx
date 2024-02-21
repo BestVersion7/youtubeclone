@@ -18,7 +18,7 @@ export const VideoPreview = async (props: VideoType) => {
                 <Link href={`/watch?v=${props.id}`}>
                     <img
                         alt="preview"
-                        className="my-[-10%] w-[640px] h-[480px]"
+                        className=" my-[-10%] "
                         src={props.snippet.thumbnails.standard.url}
                     />
                     {/* <Image
