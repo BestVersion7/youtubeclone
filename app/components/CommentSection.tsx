@@ -66,6 +66,7 @@ export const CommentSection = () => {
                             }
                             className="h-12 w-12 mt-1 rounded-full border-2 border-black"
                             alt="channel"
+                            // loading="eager"
                         />
                         {/* <Image
                             src={

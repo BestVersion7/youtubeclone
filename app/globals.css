@@ -3,6 +3,27 @@
 @tailwind utilities;
 
 @layer components {
+
+    .watch-grid {
+        display: grid;
+        grid-template-columns: _1fr auto;
+        grid-template-areas:
+            "video aside"
+            "comment aside";
+    }
+
+    #watch-grid-video {
+        grid-area: video;
+    }
+
+    #watch-grid-aside {
+        grid-area: aside;
+    }
+
+    #watch-grid-comment {
+        grid-area: comment
+    }
+
     .drawer-title {
         @apply px-2 font-medium text-base tracking-wide
     }
