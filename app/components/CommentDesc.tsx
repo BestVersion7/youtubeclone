@@ -6,8 +6,7 @@ import DomPurify from "dompurify";
 export const CommentDesc = (props: { desc: string }) => {
     const sanitizedString = DomPurify.sanitize(props.desc);
     const [expand, setExpand] = useState(false);
-    const limit = 220;
-
+    const limit = 200;
     // format desc to limit and add more after it
     const threeLinesDesc = formatShortenDesc(sanitizedString, limit);
 
@@ -18,7 +17,6 @@ export const CommentDesc = (props: { desc: string }) => {
                     <span
                         dangerouslySetInnerHTML={{ __html: sanitizedString }}
                     />{" "}
-                    {props.desc} <br />
                     <button
                         type="button"
                         onClick={() => setExpand(() => false)}
@@ -30,7 +28,7 @@ export const CommentDesc = (props: { desc: string }) => {
             ) : (
                 <>
                     <span
-                        dangerouslySetInnerHTML={{ __html: sanitizedString }}
+                        dangerouslySetInnerHTML={{ __html: threeLinesDesc }}
                     />
 
                     {sanitizedString.length > limit && (

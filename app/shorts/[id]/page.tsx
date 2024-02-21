@@ -18,6 +18,8 @@ import { LiaDownloadSolid } from "react-icons/lia";
 import { AsideNav } from "@/app/components/navigation/AsideNav";
 import { ShortsIconsMapped } from "@/app/components/ShortsIconsMapped";
 import Image from "next/image";
+import Link from "next/link";
+import { IoArrowBack } from "react-icons/io5";
 
 export default async function ShortsPage(props: { params: { id: string } }) {
     let autoplay = "";
@@ -58,10 +60,17 @@ export default async function ShortsPage(props: { params: { id: string } }) {
                 <AsideNav modal={false} />
             </aside>
 
-            <div className=" flex h-[calc(98vh-72px)] justify-center gap-4 text-white">
-                <div className="relative flex w-full max-w-[calc((98vh-72px)/1.78)] max-h-[calc(98vh-72px)]">
+            <div className="fixed w-full left-0 top-0 z-40 h-full sm:static sm:flex sm:h-[calc(98vh-72px)] justify-center gap-4 text-white">
+                {/* back button */}
+                <Link
+                    href="/"
+                    className="absolute z-10 text-5xl rounded-full text-orange-300 p-1 bg-black bg-opacity-25 top-2 left-2 sm:hidden"
+                >
+                    <IoArrowBack />
+                </Link>
+                <div className="relative flex w-full h-full sm:max-w-[calc((98vh-72px)/1.78)] sm:max-h-[calc(98vh-72px)]">
                     <iframe
-                        className="absolute rounded-2xl left-0 top-0 w-full h-full"
+                        className="absolute sm:rounded-2xl left-0 top-0 w-full h-full"
                         src={`https://www.youtube.com/embed/${id}${autoplay}`}
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen

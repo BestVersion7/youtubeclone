@@ -115,7 +115,7 @@ export const VideoCard = async (props: VideoTypeWithPlayer) => {
                         </p>
                         <p>{formatPublishDate(props.snippet.publishedAt)}</p>
                     </div>
-                    <div className="whitespace-pre-line video-description">
+                    <div className="whitespace-pre-line">
                         <VideoDesc desc={props.snippet.description} />
                     </div>
                 </div>

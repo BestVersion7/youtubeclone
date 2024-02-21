@@ -88,7 +88,10 @@ export const formatPublishDate = (date: Date) => {
 export const formatShortenDesc = (desc: string, limit: number) => {
     const shortenDesc = desc.slice(0, limit);
 
-    const threeLinesDesc = shortenDesc.split("\n").slice(0, 3).join("\n");
+    const threeLinesDesc = shortenDesc
+        .split(/\n|<br>/)
+        .slice(0, 3)
+        .join("\n");
     return threeLinesDesc;
 };
 
