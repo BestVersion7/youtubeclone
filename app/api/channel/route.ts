@@ -35,8 +35,6 @@ export async function GET(req: NextRequest) {
                         thumbnail,
                     },
                 });
-                // adding this because it's not lolading properly
-                return NextResponse.json(thumbnail);
             }
 
             return NextResponse.json(thumbnail);

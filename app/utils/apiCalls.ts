@@ -66,10 +66,10 @@ export const getChannelThumbnailById = async (channelId: string) => {
     const res = await fetch(
         `${base_url}/api/channel?channel_id=${channelId}&thumbnailOnly=1`,
         {
-            cache: "no-cache",
-            // next: {
-            //     revalidate: revalidateTime,
-            // },
+            // cache: "no-cache",
+            next: {
+                revalidate: revalidateTime,
+            },
         }
     );
     const data: string = await res.json();
