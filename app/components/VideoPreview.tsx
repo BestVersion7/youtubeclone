@@ -39,7 +39,7 @@ export const VideoPreview = async (props: VideoType) => {
                     src={thumbnail}
                     title={props.snippet.channelTitle}
                     alt={props.snippet.channelTitle}
-                    className="mt-1 rounded-3xl w-20 h-20"
+                    className="mt-1 rounded-3xl object-contain"
                 />
                 {/* <Image
                     src={thumbnail}
