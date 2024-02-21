@@ -116,6 +116,10 @@ export const formatVideoLength = (time: string) => {
 };
 
 export const formatEmbedIframe = (iframeString: string) => {
+    let autoplay = "";
+    if (process.env.NODE_ENV === "production") {
+        autoplay = "?autoplay=1";
+    }
     const srcIndex = iframeString.indexOf('src="');
 
     const endIndex = iframeString.indexOf('"', srcIndex + 5);
@@ -123,7 +127,7 @@ export const formatEmbedIframe = (iframeString: string) => {
     const srcValue = iframeString.slice(srcIndex + 5, endIndex);
 
     // append autoplay
-    const newSrcValue = srcValue + "?autoplay=1";
+    const newSrcValue = srcValue + autoplay;
 
     const modifiedIFrameString =
         iframeString.slice(0, srcIndex + 5) +

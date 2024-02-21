@@ -23,7 +23,8 @@ export default async function WatchPage(props: {
             <div>
                 <VideoCard {...videoInfo} />
                 {/* Comments this will be client rendered */}
-                <h3 className="text-lg font-bold">
+                <br />
+                <h3 className="text-lg font-medium">
                     {Number(videoInfo.statistics.commentCount).toLocaleString()}{" "}
                     Comments
                 </h3>

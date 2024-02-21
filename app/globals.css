@@ -20,6 +20,10 @@
         @apply flex items-center gap-2 bg-gray-100 hover:bg-gray-200 hover:cursor-pointer rounded-full px-2 py-1
     }
 
+    .shorts-icon {
+        @apply p-3 bg-gray-100 bg-opacity-25 rounded-full hover:bg-opacity-50 md:hover:bg-gray-300
+    }
+
     .shorts-iframe {
         @apply h-screen fixed max-h-[580px] max-w-[330px] rounded-xl z-40 top-0 left-0 right-0 m-auto sm:top-20
     }
