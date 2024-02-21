@@ -59,15 +59,15 @@ export const CommentSection = () => {
                         key={index}
                         className="grid grid-cols-[50px,auto] gap-2"
                     >
-                        {/* <img
+                        <img
                             src={
                                 item.snippet.topLevelComment.snippet
                                     .authorProfileImageUrl
                             }
                             className="h-12 w-12 mt-1 rounded-full border-2 border-black"
                             alt="channel"
-                        /> */}
-                        <Image
+                        />
+                        {/* <Image
                             src={
                                 item.snippet.topLevelComment.snippet
                                     .authorProfileImageUrl
@@ -76,7 +76,7 @@ export const CommentSection = () => {
                             width={50}
                             alt={"channel"}
                             className="mt-1 rounded-full border-2 border-black "
-                        />
+                        /> */}
                         <div className="flex flex-col mt-1 gap-1">
                             <span className="text-sm">
                                 <span className="font-medium">

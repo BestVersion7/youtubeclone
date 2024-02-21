@@ -21,14 +21,18 @@ export const VideoAside = async (props: VideoTypeWithPlayer) => {
                 }`}
                 className="relative"
             >
-                <Image
-                    // sizes="100vw"
+                <img
+                    src={props.snippet.thumbnails.medium.url}
+                    className="h-24 w-[170px] rounded-md object-contain"
+                    alt="preview"
+                />
+                {/* <Image
                     alt="preview"
                     src={props.snippet.thumbnails.medium.url}
                     className="rounded-xl object-contain w-full"
                     width={170}
                     height={120}
-                />
+                /> */}
                 <p className="flex absolute z-10 rounded-md right-2 bottom-1 ">
                     {props.player.embedHeight > 800 ? (
                         <span className="text-red-400 ">

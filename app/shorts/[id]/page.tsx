@@ -69,13 +69,19 @@ export default async function ShortsPage(props: { params: { id: string } }) {
                     {/* description */}
                     <div className="text-sm z-10 absolute bottom-4 left-4 w-[calc((98vh-72px)/1.78-83px)]">
                         <div className="flex items-center gap-2">
-                            <Image
+                            <img
+                                src={channelInfo.snippet.thumbnails.default.url}
+                                alt={channelInfo.snippet.title}
+                                className="rounded-full h-10 w-10"
+                                title={channelInfo.snippet.title}
+                            />
+                            {/* <Image
                                 src={channelInfo.snippet.thumbnails.default.url}
                                 alt={channelInfo.snippet.title}
                                 className="rounded-full"
                                 height={40}
                                 width={40}
-                            />
+                            /> */}
                             <span className="text-base overflow-hidden whitespace-nowrap text-ellipsis">
                                 {channelInfo.snippet.title}
                             </span>
@@ -89,28 +95,40 @@ export default async function ShortsPage(props: { params: { id: string } }) {
                     <div className="absolute z-10 bottom-4 right-4 flex flex-col items-center md:hidden">
                         <ShortsIconsMapped {...video} />
                         <br />
-                        <Image
+                        <img
+                            src={channelInfo.snippet.thumbnails.default.url}
+                            alt={channelInfo.snippet.title}
+                            className="rounded-full h-10 w-10"
+                            title={channelInfo.snippet.title}
+                        />
+                        {/* <Image
                             src={channelInfo.snippet.thumbnails.default.url}
                             alt={channelInfo.snippet.title}
                             className="rounded-full"
                             height={40}
                             width={40}
                             title={channelInfo.snippet.title}
-                        />
+                        /> */}
                     </div>
                 </div>
                 {/* icons sm & up*/}
                 <div className="hidden md:flex flex-col justify-end items-center mb-4 text-black">
                     <ShortsIconsMapped {...video} />
                     <br />
-                    <Image
+                    <img
+                        src={channelInfo.snippet.thumbnails.default.url}
+                        alt={channelInfo.snippet.title}
+                        className="rounded-full h-10 w-10"
+                        title={channelInfo.snippet.title}
+                    />
+                    {/* <Image
                         src={channelInfo.snippet.thumbnails.default.url}
                         alt={channelInfo.snippet.title}
                         className="rounded-full"
                         height={40}
                         width={40}
                         title={channelInfo.snippet.title}
-                    />
+                    /> */}
                 </div>
             </div>
         </main>
