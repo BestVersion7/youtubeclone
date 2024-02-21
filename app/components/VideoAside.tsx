@@ -22,11 +22,10 @@ export const VideoAside = async (props: VideoTypeWithPlayer) => {
                 className="relative"
             >
                 <Image
-                    sizes="100vw"
+                    // sizes="100vw"
                     alt="preview"
                     src={props.snippet.thumbnails.medium.url}
                     className="rounded-xl object-contain w-full"
-                    // fill
                     width={170}
                     height={120}
                 />

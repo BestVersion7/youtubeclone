@@ -17,7 +17,7 @@ export const VideoPreview = async (props: VideoType) => {
             <div className="overflow-hidden relative rounded-xl">
                 <Link href={`/watch?v=${props.id}`}>
                     <Image
-                        sizes="100vw"
+                        // sizes="100vw"
                         alt="preview"
                         className="my-[-10%]"
                         src={props.snippet.thumbnails.standard.url}
