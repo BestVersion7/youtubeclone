@@ -75,7 +75,7 @@ export const CommentSection = () => {
                             }
                             height={50}
                             width={50}
-                            alt={"channel"}
+                            alt="channel"
                             className="mt-1 rounded-full border-2 border-black "
                             unoptimized
                         />

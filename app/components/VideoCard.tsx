@@ -34,20 +34,21 @@ export const VideoCard = async (props: VideoTypeWithPlayer) => {
                 {/* channel */}
                 <div className="flex md:items-center flex-col gap-2 md:flex-row md:justify-between">
                     <div className="flex gap-2 items-center">
-                        <img
+                        {/* <img
                             src={channelInfo.snippet.thumbnails.default.url}
                             title={props.snippet.channelTitle}
                             alt={props.snippet.channelTitle}
                             className="w-12 h-12 mt-1 rounded-full border-2 border-black "
-                        />
-                        {/* <Image
+                        /> */}
+                        <Image
                             src={channelInfo.snippet.thumbnails.default.url}
                             height={50}
                             width={50}
                             title={props.snippet.channelTitle}
                             alt={props.snippet.channelTitle}
                             className="mt-1 rounded-full border-2 border-black "
-                        /> */}
+                            unoptimized
+                        />
                         <div className="flex flex-col">
                             <p className="font-medium">
                                 {channelInfo.snippet.title}
