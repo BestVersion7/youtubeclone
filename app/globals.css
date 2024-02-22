@@ -24,6 +24,22 @@
         grid-area: comment
     }
 
+    #home-video-1 {
+        @apply hidden sm:block
+    }
+
+    #home-video-2 {
+        @apply hidden lg:block
+    }
+
+    #home-video-3 {
+        @apply hidden min-[1400px]:block
+    }
+
+    #home-video-4 {
+        @apply hidden min-[1720px]:block
+    }
+
     .drawer-title {
         @apply px-2 font-medium text-base tracking-wide
     }

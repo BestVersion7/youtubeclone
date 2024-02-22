@@ -28,8 +28,8 @@ export default async function ShortsPage(props: { params: { id: string } }) {
     }
     const id = props.params.id;
     const video = await getVideoById(id);
-    const iframe = formatEmbedIframe(video.player.embedHtml);
-    const channelInfo = await getChannelById(video.snippet.channelId);
+    const iframe = formatEmbedIframe(video.items[0].player.embedHtml);
+    const channelInfo = await getChannelById(video.items[0].snippet.channelId);
     // const comments = await get20CommentsByVideoId(id);
 
     return (
@@ -97,13 +97,13 @@ export default async function ShortsPage(props: { params: { id: string } }) {
                             </span>
                         </div>
                         <p className="video-title">
-                            {video.snippet.description}
+                            {video.items[0].snippet.description}
                         </p>
                     </div>
 
                     {/* icons sm */}
                     <div className="absolute z-10 bottom-4 right-4 flex flex-col items-center md:hidden">
-                        <ShortsIconsMapped {...video} />
+                        <ShortsIconsMapped {...video.items[0]} />
                         <br />
                         {/* <img
                             src={channelInfo.snippet.thumbnails.default.url}
@@ -124,7 +124,7 @@ export default async function ShortsPage(props: { params: { id: string } }) {
                 </div>
                 {/* icons sm & up*/}
                 <div className="hidden md:flex flex-col justify-end items-center mb-4 text-black">
-                    <ShortsIconsMapped {...video} />
+                    <ShortsIconsMapped {...video.items[0]} />
                     <br />
                     {/* <img
                         src={channelInfo.snippet.thumbnails.default.url}

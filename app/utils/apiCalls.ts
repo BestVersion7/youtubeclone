@@ -3,6 +3,7 @@ import {
     VideoTypeWithPlayer,
     ChannelType,
     CommentType,
+    PlaylistItemType,
 } from "./types";
 
 let base_url = "http://localhost:3000";
@@ -41,9 +42,8 @@ export const getVideoById = async (videoId: string) => {
     const res = await fetch(`${base_url}/api/video?video_id=${videoId}`, {
         cache: "no-cache",
     });
-    const data = await res.json();
-    const data2: VideoTypeWithPlayer = await data.items[0];
-    return data2;
+    const data: { items: VideoTypeWithPlayer[] } = await res.json();
+    return data;
 };
 
 export const get20CommentsByVideoId = async (
@@ -82,6 +82,19 @@ export const getChannelById = async (channelId: string) => {
     });
     const data = await res.json();
     const data2: ChannelType = await data.items[0];
+    return data2;
+};
+
+export const get30PlayListItemByPlaylistId = async (playlistId: string) => {
+    const res = await fetch(
+        `${base_url}/api/playlist?playlistId=${playlistId}&limit=30`,
+        {
+            next: { revalidate: revalidateTime },
+        }
+        // { cache: "no-cache" }
+    );
+    const data = await res.json();
+    const data2: { items: PlaylistItemType[] } = await data;
     return data2;
 };
 

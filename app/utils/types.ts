@@ -75,6 +75,11 @@ export type ChannelType = {
     statistics: {
         subscriberCount: number;
     };
+    contentDetails: {
+        relatedPlaylists: {
+            uploads: string;
+        };
+    };
 };
 
 export type CommentType = {
@@ -88,5 +93,12 @@ export type CommentType = {
                 textDisplay: string;
             };
         };
+    };
+};
+
+export type PlaylistItemType = {
+    snippet: snippet;
+    contentDetails: {
+        videoId: string;
     };
 };

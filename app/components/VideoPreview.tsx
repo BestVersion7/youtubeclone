@@ -9,13 +9,18 @@ import {
 import { GoDotFill } from "react-icons/go";
 import { getChannelThumbnailById } from "../utils/apiCalls";
 
-export const VideoPreview = async (props: VideoType) => {
+type props = VideoType & { index?: number };
+
+export const VideoPreview = async (props: props) => {
     const thumbnail = await getChannelThumbnailById(props.snippet.channelId);
 
     return (
-        <div>
+        <div id={`home-video-${props.index && props.index}`}>
             <div className="overflow-hidden relative rounded-xl">
-                <Link href={`/watch?v=${props.id}`}>
+                <Link
+                    href={`/watch?v=${props.id}`}
+                    className="hover:opacity-80"
+                >
                     {/* <img
                         alt="preview"
                         className=" my-[-10%] "
