@@ -25,23 +25,23 @@ export default async function Home() {
     const last45Videos = videos.slice(5);
 
     // shorts
-    // const channelId = "UCtRPw7EC3UyfongION7BVqA";
+    const channelId = "UCtRPw7EC3UyfongION7BVqA";
 
-    // const channel = await getChannelById(channelId);
-    // const playlist = await get30PlayListItemByPlaylistId(
-    //     channel.contentDetails.relatedPlaylists.uploads
-    // );
+    const channel = await getChannelById(channelId);
+    const playlist = await get30PlayListItemByPlaylistId(
+        channel.contentDetails.relatedPlaylists.uploads
+    );
 
-    // const videoIds = playlist.items
-    //     .map((item) => item.contentDetails.videoId)
-    //     .join("%2C");
-    // const shortVideos = await getVideoById(videoIds);
-    // const take10FilterVertical = shortVideos.items
-    //     .filter((item) => item.player.embedHeight > 800)
-    //     .slice(0, 10);
-    // const mappedShorts = take10FilterVertical.map((item, index) => (
-    //     <ShortsPreview key={index} {...item} />
-    // ));
+    const videoIds = playlist.items
+        .map((item) => item.contentDetails.videoId)
+        .join("%2C");
+    const shortVideos = await getVideoById(videoIds);
+    const take10FilterVertical = shortVideos.items
+        .filter((item) => item.player.embedHeight > 800)
+        .slice(0, 10);
+    const mappedShorts = take10FilterVertical.map((item, index) => (
+        <ShortsPreview key={index} {...item} />
+    ));
 
     return (
         <main className="max-w-[2000px] m-auto p-0">
@@ -78,7 +78,7 @@ export default async function Home() {
                 ))}
             </section>
             {/* shorts */}
-            {/* <section className="py-2 px-4 sm:px-6 md:ml-16 xl:ml-64 min-[2550px]:ml-0 ">
+            <section className="py-2 px-4 sm:px-6 md:ml-16 xl:ml-64 min-[2550px]:ml-0 ">
                 <h2 className="flex items-center gap-2 ">
                     <span className="text-red-500 text-2xl">
                         <SiYoutubeshorts />
@@ -88,7 +88,7 @@ export default async function Home() {
                 <br />
                 <ItemSwiper cards={mappedShorts} />
             </section>
-            <br /> */}
+            <br />
             {/* long */}
             <section className="py-2 px-4 sm:px-6 md:ml-16 xl:ml-64 min-[2550px]:ml-0 grid gap-x-4 gap-y-7 sm:grid-cols-2 lg:grid-cols-3 min-[1400px]:grid-cols-4 min-[1720px]:grid-cols-5">
                 {last45Videos.map((item, index) => (
