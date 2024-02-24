@@ -14,7 +14,8 @@ import { BsMusicNoteBeamed } from "react-icons/bs";
 import { CiYoutube } from "react-icons/ci";
 import { LiaDownloadSolid } from "react-icons/lia";
 import { ShortsPreview } from "./components/ShortsPreview";
-import { ItemSwiper } from "./components/ItemSwiper";
+import { HorizontalSwiper } from "./components/HorizontalSwiper";
+import { defaultShortsChannelId } from "./utils/constants";
 
 export default async function Home() {
     const videos = await get50Videos();
@@ -25,9 +26,7 @@ export default async function Home() {
     const last45Videos = videos.slice(5);
 
     // shorts
-    const channelId = "UCtRPw7EC3UyfongION7BVqA";
-
-    const channel = await getChannelById(channelId);
+    const channel = await getChannelById(defaultShortsChannelId);
     const playlist = await get30PlayListItemByPlaylistId(
         channel.contentDetails.relatedPlaylists.uploads
     );
@@ -86,7 +85,7 @@ export default async function Home() {
                     <span className="text-xl font-medium">Shorts</span>
                 </h2>
                 <br />
-                <ItemSwiper cards={mappedShorts} />
+                <HorizontalSwiper cards={mappedShorts} />
             </section>
             <br />
             {/* long */}

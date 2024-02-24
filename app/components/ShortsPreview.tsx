@@ -3,7 +3,7 @@ import Link from "next/link";
 import { VideoType } from "../utils/types";
 import { formatViews } from "../utils/format";
 
-export const ShortsPreview = async (props: VideoType) => {
+export const ShortsPreview = (props: VideoType) => {
     return (
         <Link href={`/shorts/${props.id}`} className="hover:opacity-80">
             <div className="relative aspect-[5/9] ">

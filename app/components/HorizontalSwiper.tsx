@@ -9,7 +9,7 @@ import "swiper/css/navigation";
 
 import { Pagination, Navigation } from "swiper/modules";
 
-export function ItemSwiper(props: { cards: JSX.Element[] }) {
+export function HorizontalSwiper(props: { cards: JSX.Element[] }) {
     return (
         <div className="">
             <Swiper

@@ -1,3 +1,5 @@
+import { autoplay } from "./constants";
+
 export const formatViews = (views: number) => {
     const million = 1_000_000;
     const thousand = million / 1000;
@@ -119,10 +121,6 @@ export const formatVideoLength = (time: string) => {
 };
 
 export const formatEmbedIframe = (iframeString: string) => {
-    let autoplay = "";
-    if (process.env.NODE_ENV === "production") {
-        autoplay = "?autoplay=1";
-    }
     const srcIndex = iframeString.indexOf('src="');
 
     const endIndex = iframeString.indexOf('"', srcIndex + 5);
