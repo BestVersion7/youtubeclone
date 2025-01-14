@@ -7,9 +7,136 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Account {
+  id                String  @id
+  userId            String
+  providerAccountId String
+  access_token      String?
+  expires_at        Int?
+  id_token          String?
+  provider          String
+  refresh_token     String?
+  scope             String?
+  session_state     String?
+  token_type        String?
+  type              String
+  User              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model CartInfo {
+  created_at    DateTime    @default(now()) @db.Timestamptz(6)
+  quantity      Decimal     @db.Decimal
+  product_price Decimal     @db.Decimal
+  cookie_id     String
+  purchased     Boolean     @default(false)
+  product_id    BigInt
+  price_id      BigInt
+  cart_id       BigInt      @id @default(autoincrement())
+  CookieInfo    CookieInfo  @relation(fields: [cookie_id], references: [cookie_id], onDelete: Cascade)
+  PriceInfo     PriceInfo   @relation(fields: [price_id], references: [price_id], onDelete: Cascade)
+  ProductInfo   ProductInfo @relation(fields: [product_id], references: [product_id], onDelete: Cascade)
+}
+
+model CookieInfo {
+  cookie_id      String     @id @unique
+  created_at     DateTime   @default(now()) @db.Timestamptz(6)
+  email          String?
+  payment_intent String?    @unique
+  CartInfo       CartInfo[]
+  OrderInfo      OrderInfo?
+}
+
+model OrderInfo {
+  created_at     DateTime   @default(now()) @db.Timestamptz(6)
+  order_total    Decimal?   @db.Decimal
+  payment_intent String
+  email          String
+  cookie_id      String     @unique
+  tracking_id    String?
+  order_number   BigInt     @id @default(autoincrement())
+  CookieInfo     CookieInfo @relation(fields: [cookie_id], references: [cookie_id])
+}
+
+model PriceInfo {
+  created_at                                       DateTime      @default(now()) @db.Timestamptz(6)
+  unit_amount                                      Decimal?      @db.Decimal
+  updated_at                                       DateTime?     @default(now()) @db.Timestamptz(6)
+  currency                                         String        @default("usd")
+  product_id                                       BigInt
+  price_id                                         BigInt        @id @default(autoincrement())
+  CartInfo                                         CartInfo[]
+  ProductInfo_PriceInfo_product_idToProductInfo    ProductInfo   @relation("PriceInfo_product_idToProductInfo", fields: [product_id], references: [product_id], onDelete: Cascade)
+  ProductInfo_ProductInfo_default_priceToPriceInfo ProductInfo[] @relation("ProductInfo_default_priceToPriceInfo")
+}
+
+model ProductAvailabilityInfo {
+  updated_at         DateTime    @default(now()) @db.Timestamptz(6)
+  available_quantity Decimal     @default(0) @db.Decimal
+  product_id         BigInt      @unique
+  id                 BigInt      @id @default(autoincrement())
+  ProductInfo        ProductInfo @relation(fields: [product_id], references: [product_id], onDelete: Cascade)
+}
+
+model ProductInfo {
+  created_at                                     DateTime                 @default(now()) @db.Timestamptz(6)
+  description                                    String?
+  images                                         String[]
+  name                                           String                   @unique
+  updated_at                                     DateTime?                @default(now()) @db.Timestamptz(6)
+  active                                         Boolean?                 @default(true)
+  category                                       String?
+  default_price                                  BigInt?
+  product_id                                     BigInt                   @id @default(autoincrement())
+  CartInfo                                       CartInfo[]
+  PriceInfo_PriceInfo_product_idToProductInfo    PriceInfo[]              @relation("PriceInfo_product_idToProductInfo")
+  ProductAvailabilityInfo                        ProductAvailabilityInfo?
+  PriceInfo_ProductInfo_default_priceToPriceInfo PriceInfo?               @relation("ProductInfo_default_priceToPriceInfo", fields: [default_price], references: [price_id], onDelete: Restrict)
+  ProductReviewInfo                              ProductReviewInfo[]
+}
+
+model ProductReviewInfo {
+  created_at     DateTime     @default(now()) @db.Timestamptz(6)
+  review_message String?
+  review_star    Decimal      @default(5) @db.Decimal
+  user_email     String?
+  product_id     BigInt?
+  review_id      BigInt       @id @default(autoincrement())
+  ProductInfo    ProductInfo? @relation(fields: [product_id], references: [product_id], onDelete: Cascade)
+  User           User?        @relation(fields: [user_email], references: [email], onDelete: Cascade)
+}
+
+model Session {
+  id           String   @id
+  userId       String
+  expires      DateTime
+  sessionToken String   @unique
+  User         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id                String              @id
+  name              String?
+  email             String?             @unique
+  emailVerified     DateTime?
+  image             String?
+  Account           Account[]
+  ProductReviewInfo ProductReviewInfo[]
+  Session           Session[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
 model Channel {
-  id         BigInt   @id(map: "Videos_pkey") @default(autoincrement())
+  id         BigInt   @id @default(autoincrement())
   created_at DateTime @default(now()) @db.Timestamptz(6)
-  channelId  String   @unique(map: "Videos_channelId_key")
+  channelId  String?
   thumbnail  String?
 }
